@@ -387,7 +387,7 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>ខេត្តបច្ចុប្បន្ន</p>
+                                        <p>របាយការណ៍ភូមិ</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -400,7 +400,7 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>ស្រុកកំណើត</p>
+                                        <p>របាយការណ៍ឃុំ</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -413,21 +413,7 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>ឃុំសង្កាត់</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-move-right">
-                                            <path d="M18 8L22 12L18 16" />
-                                            <path d="M2 12H22" />
-                                        </svg>
-                                        <p>ភូមិកំណើត</p>
+                                        <p>របាយការណ៍ស្រុក/ខេត្ត</p>
                                     </a>
                                 </li>
                             </ul>
