@@ -1,7 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Moul&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Moul&family=Noto+Sans+Khmer:wght@100..900&display=swap");
 
-*{
-  font-family: "Noto Sans Khmer";
-  font-weight: 500;
+* {
+    font-family: "Noto Sans Khmer";
+    font-weight: 500;
+
 }
+
+.tab {
+    overflow: hidden;
+    /* border-bottom: 1px solid #ccc; */
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+    border-radius: 40px;
+
+}
+
+.tab button.active {
+    background-color: #ccc;
+    border-radius: 40px;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FatherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -23,4 +24,6 @@ Route::get("/", [HomeController::class, 'index'])->name('dashbaord');
 Route::get("/test", [HomeController::class, 'test'])->name('testing');
 Route::get('/test2', [HomeController::class, 'testing2'])->name('test2');
 
-
+Route::controller(FatherController::class)->group(function(){
+    Route::get('/tab_father', 'index')->name('tab.father');
+});

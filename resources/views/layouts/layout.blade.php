@@ -208,7 +208,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item {{ Route::is('testing') || Route::is('test2') ? 'menu-open' : '' }}">
+                        <li class="nav-item {{ Route::is('tab.father') || Route::is('test2') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -224,10 +224,10 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview"
-                                style="display: {{ Route::is('testing') || Route::is('test2') ? 'block' : 'none' }};">
+                                style="display: {{ Route::is('tab.father') || Route::is('test2') ? 'block' : 'none' }};">
                                 <li class="nav-item">
-                                    <a href="{{ route('testing') }}"
-                                        class="nav-link {{ Route::is('testing') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('tab.father') }}"
+                                        class="nav-link {{ Route::is('tab.father') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
