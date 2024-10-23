@@ -35,7 +35,7 @@
         </div>
         <div style="background-color: white; border-top:2px solid blue;height:100vh;" class="p-3">
             <table class="table d" id="Datatable">
-                <thead class="table-primary">
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">
                             <input type="checkbox" id="checkAll" />
