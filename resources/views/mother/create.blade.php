@@ -82,7 +82,7 @@
 @extends('cdn')
 <form action="" class="mt-4">
     <fieldset class="scheduler-border">
-        <legend class="scheduler-border">បង្កើតព័ត៌មានរបស់ឪពុក</legend>
+        <legend class="scheduler-border">បង្កើតព័ត៌មានរបស់ម្តាយ</legend>
 
         <!-- Other form fields -->
 
@@ -407,8 +407,5 @@ $("#imageValide").on('change', function() {
             }
         });
     });
-
-
-
 
 </script>

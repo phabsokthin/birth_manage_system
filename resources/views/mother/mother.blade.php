@@ -5,7 +5,7 @@
 
 <div class="mt-3">
     <fieldset class="scheduler-border">
-        <legend class="scheduler-border">បញ្ជីព័ត៌មានរបស់ឪពុក</legend>
+        <legend class="scheduler-border">បញ្ជីព័ត៌មានរបស់ម្តាយ</legend>
 
         <div class="mt-5">
             <table class="table table-bordered table-striped" id="data-table">

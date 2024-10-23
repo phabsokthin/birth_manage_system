@@ -10,7 +10,7 @@
                 <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
                 <circle cx="12" cy="8" r="2" />
             </svg>
-            <h5>ព័ត៌មានរបស់ឪពុក</h5>
+            <h5>ព័ត៌មានរបស់ម្តាយ</h5>
         </div>
         <div style="background-color: white; border-top:2px solid blue;" class="p-3">
 
@@ -50,11 +50,11 @@
             </div>
 
             <div id="new" class="tabcontent" style="display:none;">
-                @include('father.create')
+                @include('mother.create')
             </div>
 
             <div id="list" class="tabcontent" style="display:none;">
-                @include('father.father')
+                @include('mother.mother')
             </div>
 
             <div id="other" class="tabcontent" style="display:none;">

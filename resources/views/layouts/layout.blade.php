@@ -197,7 +197,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('testing') }}" class="nav-link">
+                            <a href="{{ route('tab.birthcertificate') }}" class="nav-link {{ Route::is('tab.birthcertificate') ? 'bg-info' : ''}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -229,7 +229,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview"
-                                style="display: {{ Route::is('tab.father') || Route::is('test2') ? 'block' : 'none' }};">
+                                style="display: {{ Route::is('tab.father') || Route::is('tab.mother') ? 'block' : 'none' }};">
                                 <li class="nav-item">
                                     <a href="{{ route('tab.father') }}"
                                         class="nav-link {{ Route::is('tab.father') ? 'bg-info' : '' }}">
@@ -244,8 +244,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('tab.mother') }}"
+                                        class="nav-link {{ Route::is('tab.mother') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -266,14 +266,14 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>ព័ត៌មានរបស់កូន</p>
+                                        <p>សំបុត្រកំណើត</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
 
-                        <li class="nav-item {{ Route::is('testing') || Route::is('test2') ? 'menu-open' : '' }}">
+                        <li class="nav-item {{ Route::is("province.index") || Route::is('district.index') || Route::is('commune.index') || Route::is('village.index') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -531,13 +531,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-   
+
     <script>
         $(document).ready(function () {
             $('#Datatable').DataTable();
         });
     </script>
-    
+
 </body>
 
 </html>

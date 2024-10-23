@@ -5,15 +5,17 @@
         <div class="d-flex gap-2 my-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-book-user">
-                <path d="M15 13a3 3 0 1 0-6 0" />
-                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
-                <circle cx="12" cy="8" r="2" />
+                class="lucide lucide-calendar-plus">
+                <path d="M8 2v4" />
+                <path d="M16 2v4" />
+                <path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8" />
+                <path d="M3 10h18" />
+                <path d="M16 19h6" />
+                <path d="M19 16v6" />
             </svg>
-            <h5>ព័ត៌មានរបស់ឪពុក</h5>
+            <h5 class="ml-1">សំបុត្រកំណើត</h5>
         </div>
         <div style="background-color: white; border-top:2px solid blue;" class="p-3">
-
 
             <!-- Tab links -->
             <div class="tab">
@@ -35,7 +37,7 @@
                         <path d="M12 16h4" />
                         <path d="M8 11h.01" />
                         <path d="M8 16h.01" />
-                    </svg> បញ្ជីគ្រប់គ្រង</button>
+                    </svg> បញ្ជីគ្រប់គ្រងសំបុត្រកំណើត</button>
                 <button class="tablinks" onclick="openCity(event, 'other')"><svg xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-pen">
@@ -46,15 +48,27 @@
                         <path d="M2 18h4" />
                         <path
                             d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
-                    </svg>ព័ត៍មានផ្សេងៗ</button>
+                    </svg>ព័ត៍មានទាក់ទង់និងសំបុត្រកំណើត</button>
+
+                <button class="tablinks" onclick="openCity(event, 'other')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-newspaper">
+                        <path
+                            d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+                        <path d="M18 14h-8" />
+                        <path d="M15 18h-5" />
+                        <path d="M10 6h8v4h-8V6Z" />
+                    </svg>
+                    របាយការណ៍</button>
             </div>
 
             <div id="new" class="tabcontent" style="display:none;">
-                @include('father.create')
+                @include('birthCertificate.create')
             </div>
 
             <div id="list" class="tabcontent" style="display:none;">
-                @include('father.father')
+                @include('mother.mother')
             </div>
 
             <div id="other" class="tabcontent" style="display:none;">

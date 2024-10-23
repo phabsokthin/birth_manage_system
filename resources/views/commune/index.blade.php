@@ -36,7 +36,7 @@
 
         <div style="background-color: white; border-top:2px solid blue;height:100vh;" class="p-3">
             <table class="table d" id="Datatable" >
-                <thead class="table-primary">
+                <thead class="sidebar-dark-primary text-light">
                     <tr>
                         <th scope="col">
                             <input type="checkbox" id="checkAll" />
@@ -111,11 +111,11 @@
     document.getElementById('DeleteButton').addEventListener('click', function() {
         const selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
         const alertMessage = document.getElementById('alert-message');
-        
-        
+
+
         if (selectedCheckboxes.length === 0) {
-            alertMessage.classList.remove('d-none'); 
-            return; 
+            alertMessage.classList.remove('d-none');
+            return;
         }
         alertMessage.classList.add('d-none');
 
