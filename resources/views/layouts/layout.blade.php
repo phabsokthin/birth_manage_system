@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1MjbNfrmYb3P9gx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
@@ -283,10 +288,10 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview"
-                                style="display: {{ Route::is('testing') || Route::is('test2') ? 'block' : 'none' }};">
+                                style="display: {{ Route::is('province.index')}};">
                                 <li class="nav-item">
-                                    <a href="{{ route('testing') }}"
-                                        class="nav-link {{ Route::is('testing') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('province.index') }}"
+                                        class="nav-link {{ Route::is('province.index') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -298,8 +303,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('district.index') }}"
+                                        class="nav-link {{ Route::is('district.index') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -311,8 +316,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('commune.index') }}"
+                                        class="nav-link {{ Route::is('commune.index') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -325,8 +330,8 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href="{{ route('village.index') }}"
+                                        class="nav-link {{ Route::is('village.index') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -343,7 +348,7 @@
 
 
                         <li class="nav-item">
-                            <a href="{{ route('testing') }}" class="nav-link">
+                            <a href="" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users">
@@ -359,7 +364,7 @@
                         </li>
 
 
-                        <li class="nav-item {{ Route::is('testing') || Route::is('test2') ? 'menu-open' : '' }}">
+                        <li class="nav-item ">
                             <a href="#" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -376,10 +381,10 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview"
-                                style="display: {{ Route::is('testing') || Route::is('test2') ? 'block' : 'none' }};">
+                                style="display;">
                                 <li class="nav-item">
-                                    <a href="{{ route('testing') }}"
-                                        class="nav-link {{ Route::is('testing') ? 'bg-info' : '' }}">
+                                    <a href=""
+                                        class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -391,8 +396,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href=""
+                                        class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -404,8 +409,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
+                                    <a href=""
+                                        class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -520,6 +525,19 @@
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3+oEzE5e1g2z5jAXf5gSk8Jp1eKB" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+   
+    <script>
+        $(document).ready(function () {
+            $('#Datatable').DataTable();
+        });
+    </script>
+    
 </body>
 
 </html>
