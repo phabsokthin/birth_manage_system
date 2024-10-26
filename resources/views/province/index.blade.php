@@ -34,7 +34,7 @@
             សូមជ្រើសរើសរបស់ដែលអ្នកចង់លុប! <!-- Message in Khmer -->
         </div>
         <div style="background-color: white; border-top:2px solid blue;height:100vh;" class="p-3">
-            <table class="table d" id="Datatable">
+            <table class="table d table-striped" id="Datatable">
                 <thead class="sidebar-dark-primary text-light">
                     <tr>
                         <th scope="col">

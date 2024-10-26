@@ -29,10 +29,18 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1MjbNfrmYb3P9gx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1MjbNfrmYb3P9gx" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css"> --}}
+
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
+
+    <!-- Bootstrap CSS -->
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
+
+    <!-- DataTables Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap4.css">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -180,7 +188,8 @@
 
 
                         <li class="nav-item">
-                            <a href="{{ route('dashbaord') }}" class="nav-link {{ Route::is('dashbaord') ? 'bg-info' : '' }}">
+                            <a href="{{ route('dashbaord') }}"
+                                class="nav-link {{ Route::is('dashbaord') ? 'bg-info' : '' }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -197,7 +206,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('tab.birthcertificate') }}" class="nav-link {{ Route::is('tab.birthcertificate') ? 'bg-info' : ''}}">
+                            <a href="{{ route('tab.birthcertificate') }}"
+                                class="nav-link {{ Route::is('tab.birthcertificate') ? 'bg-info' : '' }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -273,7 +283,8 @@
                         </li>
 
 
-                        <li class="nav-item {{ Route::is("province.index") || Route::is('district.index') || Route::is('commune.index') || Route::is('village.index') ? 'menu-open' : '' }}">
+                        <li
+                            class="nav-item {{ Route::is('province.index') || Route::is('district.index') || Route::is('commune.index') || Route::is('village.index') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -287,8 +298,7 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview"
-                                style="display: {{ Route::is('province.index')}};">
+                            <ul class="nav nav-treeview" style="display: {{ Route::is('province.index') }};">
                                 <li class="nav-item">
                                     <a href="{{ route('province.index') }}"
                                         class="nav-link {{ Route::is('province.index') ? 'bg-info' : '' }}">
@@ -380,11 +390,9 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview"
-                                style="display;">
+                            <ul class="nav nav-treeview" style="display;">
                                 <li class="nav-item">
-                                    <a href=""
-                                        class="nav-link ">
+                                    <a href="" class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -396,8 +404,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href=""
-                                        class="nav-link ">
+                                    <a href="" class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -409,8 +416,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href=""
-                                        class="nav-link ">
+                                    <a href="" class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -526,17 +532,33 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3+oEzE5e1g2z5jAXf5gSk8Jp1eKB" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3+oEzE5e1g2z5jAXf5gSk8Jp1eKB" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#Datatable').DataTable();
-        });
-    </script>
+
+    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script> --}}
+
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<!-- Bootstrap JS -->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --}}
+
+<!-- DataTables JS -->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap4.js"></script>
+<!-- Initialize DataTable -->
+<script>
+    new DataTable('#Datatable', {
+        language: {
+                url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Khmer.json"
+            }
+    });
+
+</script>
 
 </body>
 

@@ -12,7 +12,7 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        $province = Province::orderBy('province_id', 'desc')->paginate(10);
+        $province = Province::all();
         return view('province.index', compact('province'));
     }
 
@@ -31,6 +31,7 @@ class ProvinceController extends Controller
     {
         // $userId = auth()->id();
 
+        sleep(3);
         Province::create([
             'p_code' => $request->input('p_code'),
             'province_en_name' => $request->input('province_en_name'),
@@ -110,11 +111,11 @@ class ProvinceController extends Controller
         $province = Province::find($province_id);
 
         if ($province) {
-           
+
             $status = !$province->status;
 
             $province->update(['status' => $status]);
-    
+
             return redirect()->route('province.index')->with('success', 'Status updated successfully');
         } else {
             return redirect()->route('province.index')->with('error', 'Province record not found');
