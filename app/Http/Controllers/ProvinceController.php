@@ -30,8 +30,6 @@ class ProvinceController extends Controller
     public function store(Request $request)
     {
         // $userId = auth()->id();
-
-        sleep(3);
         Province::create([
             'p_code' => $request->input('p_code'),
             'province_en_name' => $request->input('province_en_name'),

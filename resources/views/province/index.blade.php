@@ -4,6 +4,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </header>
 @section('content')
+
+@extends('cdn')
+@if (Session::has('success'))
+    <script>
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានរក្សាទុកដោយជោគជ័យ</h6>'
+        });
+    </script>
+@endif
+
 <div class="content-wrapper p-4">
     <div class="d-flex justify-content-between align-items-center my-3">
         <div class="d-flex gap-2">
