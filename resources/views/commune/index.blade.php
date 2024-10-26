@@ -52,7 +52,10 @@
                 </thead>
                 <tbody>
                     @foreach ($communes as $com)
+                    
                     <tr>
+
+
                         <th scope="row">
                             <input type="checkbox" name="ids[]" value="{{$com->commune_id}}" class="delete-checkbox" />
                         </th>
@@ -107,6 +110,7 @@
         });
         document.getElementById('alert-message').classList.add('d-none');
     });
+
 
     document.getElementById('DeleteButton').addEventListener('click', function() {
         const selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
