@@ -111,4 +111,19 @@ class DistrictController extends Controller
         }
         return redirect()->back()->with('error', 'No districts selected for deletion.');
     }
+    public function toggleStatus($dis_id)
+    {
+        $province = Province::find($dis_id);
+
+        if ($province) {
+
+            $status = !$province->status;
+
+            $province->update(['status' => $status]);
+
+            return redirect()->route('district.index')->with('success', 'Status updated successfully');
+        } else {
+            return redirect()->route('district.index')->with('error', 'Province record not found');
+        }
+    }
 }

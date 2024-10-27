@@ -40,8 +40,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
-                        <button type="submit" class="btn btn-primary" disabled>យល់ស្រប</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">យល់ស្រប</button>
                     </div>
                 </form>
             </div>

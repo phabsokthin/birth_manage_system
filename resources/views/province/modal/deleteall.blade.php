@@ -1,4 +1,5 @@
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModal" aria-hidden="true">
+<!-- Confirmation Delete Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បោះបង់</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteButton">លុប</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">លុប</button>
             </div>
         </div>
     </div>

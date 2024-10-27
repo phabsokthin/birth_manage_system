@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('village.update',$vill->id) }}" method="POST">
+                <form data-update-id="{{$vill->id}}" class="update-form" action="{{ route('village.update',$vill->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -26,27 +26,60 @@
 
                     <div class="mb-3">
                         <label for="village_kh_name" class="form-label">ភូមិ(ខ្មែរ)</label>
-                        <input type="text" class="form-control" id="village_kh_name" name="village_kh_name" value="{{$vill->village_kh_name}}" placeholder="ចូរបញ្ចូលភូមិ(ខ្មែរ)" required>
+                        <input type="text" class="form-control" id="village_kh_name" name="village_kh_name" value="{{$vill->village_kh_name}}" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះភូមិជាភាសាខ្មែរ" required pattern="[\u1780-\u17FF\s]+"
+                        title="Only Khmer characters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="village_en_name" class="form-label">ភូមិ(Engish)</label>
-                        <input type="text" class="form-control" id="village_en_name" name="village_en_name" value="{{$vill->village_en_name}}" placeholder="ចូរបញ្ចូលភូមិ(Engish)" required>
+                        <input type="text" class="form-control" id="village_en_name" name="village_en_name" value="{{$vill->village_en_name}}" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះស្រុកជាភាសា English" pattern="[A-Za-z\s]+"
+                        title="Only letters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="village_code" class="form-label">លេដកូដ</label>
-                        <input type="text" class="form-control" id="village_code" name="village_code" value="{{$vill->village_code}}" placeholder="ចូរបញ្ចូលលេខកូដ" required>
+                        <input type="text" class="form-control" id="village_code" name="village_code" value="{{$vill->village_code}}" 
+                        placeholder="ចូរបញ្ចូលលេខកូដ" required pattern="\d+"
+                        title="Only numbers are allowed">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
-                        <button type="submit" class="btn btn-primary">រក្សាទុក</button>
+                        <button type="submit" class="btn btn-primary save-button" data-update-id="{{$vill->id}}" disabled>រក្សាទុក</button>
+                        <button type="button" class="btn btn-primary saving-button" data-update-id="{{$vill->id}}" style="display: none;" disabled>កំពុងរក្សាទុក...</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+ 
+@endforeach 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const forms = document.querySelectorAll(".update-form");
 
-@endforeach
+        forms.forEach(form => {
+            const updateId = form.getAttribute("data-update-id");
+            const saveButton = form.querySelector(`.save-button[data-update-id="${updateId}"]`);
+            const savingButton = form.querySelector(`.saving-button[data-update-id="${updateId}"]`);
+
+            // Enable save button if form is valid
+            form.addEventListener("input", function () {
+                saveButton.disabled = !form.checkValidity();
+            });
+
+            // Display loading button on submit
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent default form submission to show loading state
+                saveButton.style.display = "none";
+                savingButton.style.display = "inline-block";
+
+           
+            form.submit();
+        });
+        });
+    });
+</script>

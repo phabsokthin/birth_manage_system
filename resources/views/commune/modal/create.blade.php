@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('commune.store') }}" method="POST">
+                <form id="createForm" action="{{ route('commune.store') }}" method="POST">
                     @csrf
                 
                     <div class="mb-3">
@@ -28,22 +28,29 @@
 
                     <div class="mb-3">
                         <label for="commune_kh_name" class="form-label">ឃុំ(ខ្មែរ)</label>
-                        <input type="text" class="form-control" id="commune_kh_name" name="commune_kh_name" placeholder="ចូរបញ្ចូលឃុំ(ខ្មែរ)" required>
+                        <input type="text" class="form-control" id="commune_kh_name" name="commune_kh_name" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះឃុំជាភាសាខ្មែរ" required pattern="[\u1780-\u17FF\s]+"
+                               title="Only Khmer characters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="commune_en_name" class="form-label">ឃុំ(Engish)</label>
-                        <input type="text" class="form-control" id="commune_en_name" name="commune_en_name" placeholder="ចូរបញ្ចូលឃុំ(Engish)" required>
+                        <input type="text" class="form-control" id="commune_en_name" name="commune_en_name" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះឃុំជាភាសា English" pattern="[A-Za-z\s]+"
+                               title="Only letters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="commune_code" class="form-label">លេដកូដ</label>
-                        <input type="text" class="form-control" id="commune_code" name="commune_code" placeholder="ចូរបញ្ចូលលេខកូដ" required>
+                        <input type="text" class="form-control" id="commune_code" name="commune_code" 
+                        placeholder="ចូរបញ្ចូលលេខកូដ" required pattern="\d+"
+                        title="Only numbers are allowed">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
-                        <button type="submit" class="btn btn-primary">រក្សាទុក</button>
+                        <button type="submit" class="btn btn-primary" id="saveButton" disabled>រក្សាទុក</button>
+                        <button type="button" class="btn btn-primary" id="savingButton" style="display: none;" disabled>កំពុងរក្សាទុក...</button>
                     </div>
                 </form>
             </div>
@@ -58,5 +65,19 @@
         const englishName = selectedOption.getAttribute('data-en-name');
 
         document.getElementById('district_en_name').value = englishName;
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("createForm");
+        const saveButton = document.getElementById("saveButton");
+        const savingButton = document.getElementById("savingButton");
+        
+        form.addEventListener("input", function () {
+            saveButton.disabled = !form.checkValidity();
+        });
+    });
+
+    document.getElementById('createForm').addEventListener('submit', function() {
+        document.getElementById('saveButton').style.display = 'none';
+        document.getElementById('savingButton').style.display = 'inline-block';
     });
 </script>

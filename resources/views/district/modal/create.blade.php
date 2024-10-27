@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('district.store') }}" method="POST">
+                <form id="createForm" action="{{ route('district.store') }}" method="POST">
                     @csrf
                 
                     <div class="mb-3">
@@ -28,22 +28,29 @@
 
                     <div class="mb-3">
                         <label for="district_kh_name" class="form-label">ស្រុក(ខ្មែរ)</label>
-                        <input type="text" class="form-control" id="district_kh_name" name="district_kh_name" placeholder="ចូរបញ្ចូលស្រុក(ខ្មែរ)" required>
+                        <input type="text" class="form-control" id="district_kh_name" name="district_kh_name" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះស្រុកជាភាសាខ្មែរ" required pattern="[\u1780-\u17FF\s]+"
+                               title="Only Khmer characters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="district_en_name" class="form-label">ស្រុក(Engish)</label>
-                        <input type="text" class="form-control" id="district_en_name" name="district_en_name" placeholder="ចូរបញ្ចូលស្រុក(Engish)" required>
+                        <input type="text" class="form-control" id="district_en_name" name="district_en_name" 
+                        placeholder="ចូរបញ្ចូលឈ្មោះស្រុកជាភាសា English" pattern="[A-Za-z\s]+"
+                               title="Only letters are allowed">
                     </div>
 
                     <div class="mb-3">
                         <label for="dis_code" class="form-label">លេដកូដ</label>
-                        <input type="text" class="form-control" id="dis_code" name="dis_code" placeholder="ចូរបញ្ចូលលេខកូដ" required>
+                        <input type="text" class="form-control" id="dis_code" name="dis_code"  
+                        placeholder="ចូរបញ្ចូលលេខកូដ" required pattern="\d+"
+                        title="Only numbers are allowed">
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
-                        <button type="submit" class="btn btn-primary">រក្សាទុក</button>
+                        <button type="submit" class="btn btn-primary" id="saveButton" disabled>រក្សាទុក</button>
+                        <button type="button" class="btn btn-primary" id="savingButton" style="display: none;" disabled>កំពុងរក្សាទុក...</button>
                     </div>
                 </form>
             </div>
@@ -53,13 +60,25 @@
 
 <script>
     document.getElementById('province_id').addEventListener('change', function() {
-        // Get the selected option
+       
         const selectedOption = this.options[this.selectedIndex];
-        
-        // Retrieve the data attribute containing the English name
         const englishName = selectedOption.getAttribute('data-en-name');
         
-        // Set the English name input field value
         document.getElementById('province_en_name').value = englishName;
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("createForm");
+        const saveButton = document.getElementById("saveButton");
+        const savingButton = document.getElementById("savingButton");
+        
+        form.addEventListener("input", function () {
+            saveButton.disabled = !form.checkValidity();
+        });
+    });
+
+    document.getElementById('createForm').addEventListener('submit', function() {
+        document.getElementById('saveButton').style.display = 'none';
+        document.getElementById('savingButton').style.display = 'inline-block';
     });
 </script>

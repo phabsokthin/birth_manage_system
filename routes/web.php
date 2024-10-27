@@ -60,8 +60,8 @@ Route::controller(ProvinceController::class)->group(function(){
     Route::get('/province/{province_id}','show')->name('province.show');
     Route::delete('/province_deleteall', 'deleteall')->name('province.deleteall');
 });
-
 Route::patch('/province/status/{province_id}', [ProvinceController::class, 'toggleStatus'])->name('province.status');
+
 Route::controller(DistrictController::class)->group(function () {
     Route::get('/district', 'index')->name('district.index');
     Route::get('/district_show','create')->name('district.create');
@@ -71,6 +71,7 @@ Route::controller(DistrictController::class)->group(function () {
     Route::get('/district/{district_id}', 'show')->name('district.show');
     Route::delete('/district_deleteall', 'deleteAll')->name('districts.deleteall');
 });
+Route::patch('/district/status/{district_id}', [DistrictController::class, 'toggleStatus'])->name('district.status');
 
 Route::controller(CommunetController::class)->group(function () {
     Route::get('/commune', 'index')->name('commune.index');
