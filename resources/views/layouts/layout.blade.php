@@ -4,8 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>ប្រព័ន្ធគ្រប់គ្រងសំបុត្រកំណើត</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@100..900&display=swap" rel="stylesheet">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -70,89 +72,23 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                    <div>
+
                     </div>
+                    <a class="nav-link d-flex align-items-center" data-widget="navbar-search" href="#" role="button">
+                       <div class="d-flex align-items-center">
+                        <p  class=" mr-2" style=" font-family: 'Moul', cursive;margin-top: 20px">ប្រវត្តិរូប៖</p>
+                        <p class="mt-3 mr-2" style="text-transform: capitalize; font-weight: bold;">
+                            {{ Auth::user()->name }}
+                        </p>
+                       </div>
+
+                        <div style="width: 45px;height:45px" class="bg-light   rounded-pill d-flex justify-content-center align-items-center">
+                            <svg style="color: gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                    </a>
                 </li>
 
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            <div class="media">
-                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i
-                                                class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>
-                            <!-- Message End -->
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div>
-                </li>
 
             </ul>
         </nav>
@@ -266,19 +202,7 @@
                                         <p>ព័ត៌មានរបស់ម្តាយ</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('test2') }}"
-                                        class="nav-link {{ Route::is('test2') ? 'bg-info' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-move-right">
-                                            <path d="M18 8L22 12L18 16" />
-                                            <path d="M2 12H22" />
-                                        </svg>
-                                        <p>សំបុត្រកំណើត</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
 
@@ -357,7 +281,7 @@
 
 
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -371,11 +295,11 @@
                                     អ្នកប្រើប្រាស់
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
 
 
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{ Route::is('report_birth') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link ">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scroll-text">
@@ -390,7 +314,21 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display;">
+                            <ul class="nav nav-treeview" style="display;  {{ Route::is('report_birth') }}">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('report_birth') }}" class="nav-link {{ Route::is('report_birth') ? 'bg-info' : '' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-move-right">
+                                            <path d="M18 8L22 12L18 16" />
+                                            <path d="M2 12H22" />
+                                        </svg>
+                                        <p>របាយការណ៍សំបុត្រកំណើត</p>
+                                    </a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a href="" class="nav-link ">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -430,7 +368,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('testing') }}" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -444,11 +382,16 @@
                                     ប្តូរពាក្យសម្ងាត់
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
-                            <a href="{{ route('testing') }}" class="nav-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            <a href="#" class="nav-link">
+
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    @method("DELETE")
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
                                     class="lucide lucide-square-arrow-out-up-left">
@@ -456,15 +399,18 @@
                                     <path d="m3 3 9 9" />
                                     <path d="M3 9V3h6" />
                                 </svg>
-                                <p>
-                                    ចាក់ចេញ
-                                </p>
+                                    <button class="btn btn-danger btn-sm rounded-pill" onclick="return confirm('តើអ្នកចង់ចាកចេញមែនទេ?')" >ចាក់ចេញ</button>
+                                   </form>
+
+
                             </a>
                         </li>
 
                     </ul>
                 </nav>
             </div>
+
+
         </aside>
         <div>
             @yield('content')
@@ -541,24 +487,23 @@
     {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script> --}}
 
     <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
-<!-- Bootstrap JS -->
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --}}
+    <!-- Bootstrap JS -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --}}
 
-<!-- DataTables JS -->
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
-<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap4.js"></script>
-<!-- Initialize DataTable -->
-<script>
-    new DataTable('#Datatable', {
-        language: {
+    <!-- DataTables JS -->
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap4.js"></script>
+    <!-- Initialize DataTable -->
+    <script>
+        new DataTable('#Datatable', {
+            language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Khmer.json"
             }
-    });
-
-</script>
+        });
+    </script>
 
 </body>
 

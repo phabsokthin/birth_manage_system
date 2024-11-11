@@ -3,9 +3,9 @@
 <div class="modal fade" id="ModalEdit{{$vill->id}}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title" id="exampleModalLabel">ផ្ទាំងកែប្រែ</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form data-update-id="{{$vill->id}}" class="update-form" action="{{ route('village.update',$vill->id) }}" method="POST">
@@ -44,10 +44,17 @@
                         placeholder="ចូរបញ្ចូលលេខកូដ" required pattern="\d+"
                         title="Only numbers are allowed">
                     </div>
-
-                    <div class="modal-footer">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">ស្ថានភាព</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="" disabled>ជ្រើសរើសស្ថានភាព</option>
+                            <option value="1" {{ $vill->status == 1 ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $vill->status == 0 ? 'selected' : '' }}>Inactive</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer bg-dark">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">បិទ</button>
-                        <button type="submit" class="btn btn-primary save-button" data-update-id="{{$vill->id}}" disabled>រក្សាទុក</button>
+                        <button type="submit" class="btn btn-primary save-button" data-update-id="{{$vill->id}}" >រក្សាទុក</button>
                         <button type="button" class="btn btn-primary saving-button" data-update-id="{{$vill->id}}" style="display: none;" disabled>កំពុងរក្សាទុក...</button>
                     </div>
                 </form>
@@ -66,10 +73,10 @@
             const saveButton = form.querySelector(`.save-button[data-update-id="${updateId}"]`);
             const savingButton = form.querySelector(`.saving-button[data-update-id="${updateId}"]`);
 
-            // Enable save button if form is valid
-            form.addEventListener("input", function () {
-                saveButton.disabled = !form.checkValidity();
-            });
+            // // Enable save button if form is valid
+            // form.addEventListener("input", function () {
+            //     saveButton.disabled = !form.checkValidity();
+            // });
 
             // Display loading button on submit
             form.addEventListener("submit", function (e) {

@@ -30,7 +30,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ $countFamily }}</h3>
                                 <p>ចំនួនគ្រួសារ</p>
                             </div>
                             <div class="icon">
@@ -50,7 +50,7 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>10</h3>
+                                <h3>{{ $count }}</h3>
                                 <p>សំបុត្រកំណើត</p>
                             </div>
                             <div class="icon">
@@ -70,7 +70,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>15</h3>
+                                <h3>{{ $users }}</h3>
                                 <p>ចំនួនអ្នកប្រើប្រាស់</p>
                             </div>
                             <div class="icon">
@@ -90,7 +90,7 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>1520</h3>
+                                <h3>{{ $count_undo }}</h3>
                                 <p>ចំនួនមិនទាន់មានសំបុត្រកំណើត</p>
                             </div>
                             <div class="icon">

@@ -7,19 +7,19 @@
 
 @extends('cdn')
 @if (Session::has('success'))
-    <script>
-        var Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 4000
-        });
+<script>
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000
+    });
 
-        Toast.fire({
-            icon: 'success',
-            title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានរក្សាទុកដោយជោគជ័យ</h6>'
-        });
-    </script>
+    Toast.fire({
+        icon: 'success',
+        title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានរក្សាទុកដោយជោគជ័យ</h6>'
+    });
+</script>
 @endif
 
 <div class="content-wrapper p-4">
@@ -52,8 +52,8 @@
             សូមជ្រើសរើសរបស់ដែលអ្នកចង់លុប! <!-- Message in Khmer -->
         </div>
         <div style="background-color: white; border-top:2px solid blue;height:100vh;" class="p-3">
-            <table class="table d" id="Datatable">
-                <thead class="sidebar-dark-primary text-light">
+            <table class="table table-striped my-3 table-bordered " id="Datatable">
+                <thead class="sidebar-dark-primary text-light" style="width: 100px">
                     <tr>
                         <th scope="col">
                             <input type="checkbox" id="checkAll" />
@@ -77,39 +77,14 @@
                         <td>{{$pro->p_code}}</td>
                         <td>{{$pro->modify_date}}</td>
                         <!-- <td>{{$pro->status}}</td> -->
-                        <td>
-                            <form action="{{ url('/province/status/'.  $pro->province_id) }}" method="post">
-                                @csrf
-                                @method('PATCH')
-
-                                @if($pro->status == 1)
-                                <input class="bg-success" type="submit" value="Completed"
-                                    style="display: inline-block;
-                                    padding: 5px 10px;
-                                    text-align: center;
-                                    vertical-align: middle;
-                                    color: white;
-                                    border-radius: 5px;
-                                    text-decoration: none;
-                                    font-size: 8px;
-                                    font-weight: bold;
-                                    border: none;">
-                                @else
-                                <input class="bg-danger" type="submit" value="Pending"
-                                    style="display: inline-block;
-                                    padding: 5px 10px;
-                                    text-align: center;
-                                    vertical-align: middle;
-                                    color: white;
-                                    border-radius: 5px;
-                                    text-decoration: none;
-                                    font-size: 8px;
-                                    font-weight: bold;
-                                    border: none;">
-                                @endif
-                            </form>
-
+                        <td >
+                            <div class="{{ $pro->status == 1 ? 'btn btn-success btn-xs rounded-pill' : 'btn btn-danger btn-xs rounded-pill' }}">
+                                {{ $pro->status == 1 ? 'Active' : 'Inactive' }}
+                            </div>
                         </td>
+
+
+
                         <td class="text-center align-middle">
                             <a href="view-details-url" class="btn btn-warning btn-sm p-1" title="View Details"
                                 data-bs-toggle="modal"
@@ -156,8 +131,8 @@
     // Function to update the Delete button's state
     function updateDeleteButtonState() {
         const isAnyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-        deleteButton.disabled = !isAnyChecked; 
-        alertMessage.classList.add('d-none'); 
+        deleteButton.disabled = !isAnyChecked;
+        alertMessage.classList.add('d-none');
     }
 
     // Check all functionality
@@ -175,20 +150,20 @@
 
     deleteButton.addEventListener('click', function() {
         const selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
-        
+
         if (selectedCheckboxes.length === 0) {
             alertMessage.classList.remove('d-none');
             return;
         }
-        
+
         // Show the confirmation modal
         const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
         confirmModal.show();
     });
 
- 
+
     document.getElementById('confirmDelete').addEventListener('click', function() {
-       
+
         document.getElementById('delete-form').submit();
     });
 

@@ -13,38 +13,40 @@ return new class extends Migration
     {
         Schema::create('birth__certificates', function (Blueprint $table) {
             $table->id('birth_id');
-            $table->string('fname_kh');
-            $table->string('lname_kh');
-            $table->string('fname_en');
-            $table->string('lname_en');
-            $table->string('gender');
-            $table->unsignedBigInteger("father_id");
+            $table->string('birth_no')->nullable();
+            $table->string('fname_kh')->nullable();
+            $table->string('lname_kh')->nullable();
+            $table->string('fname_en')->nullable();
+            $table->string('lname_en')->nullable();
+            $table->string('gender')->nullable();
+            $table->integer('bstatus')->default(0);
+            $table->unsignedBigInteger("father_id")->nullable();
             $table->foreign("father_id")->references('father_id')->on('fathers')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger("mother_id");
+            $table->unsignedBigInteger("mother_id")->nullable();
             $table->foreign("mother_id")->references('mother_id')->on('mothers')->onDelete('cascade')->onUpdate('cascade');
             $table->string('phones');
-            $table->string('nationality');
-            $table->string('day');
-            $table->string('month');
-            $table->string('year');
-            $table->string('job_title');
-            $table->text('photo');
-            $table->unsignedBigInteger("village_id");
+            $table->string(column: 'nationality')->nullable();
+            $table->string('day')->nullable();
+            $table->string('month')->nullable();
+            $table->string('year')->nullable();
+            $table->string('job_title')->nullable();
+            $table->text('photo')->nullable();
+            $table->unsignedBigInteger("village_id")->nullable();
             $table->foreign("village_id")->references('id')->on('villages')->onDelete('cascade')->onUpdate('cascade');
 
 
-            $table->unsignedBigInteger("dis_id");
+            $table->unsignedBigInteger("dis_id")->nullable();
             $table->foreign("dis_id")->references('dis_id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger("commune_id");
+            $table->unsignedBigInteger("commune_id")->nullable();
             $table->foreign("commune_id")->references('commune_id')->on('communes')->onDelete('cascade')->onUpdate('cascade');
 
 
-            $table->unsignedBigInteger("province_id");
+            $table->unsignedBigInteger("province_id")->nullable();
             $table->foreign("province_id")->references('province_id')->on('provinces')->onDelete('cascade')->onUpdate('cascade');
 
 
-            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

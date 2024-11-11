@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mother extends Model
 {
+    protected $primaryKey = 'mother_id';
+
     use HasFactory;
 }

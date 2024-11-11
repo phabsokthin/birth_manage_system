@@ -36,7 +36,7 @@ class CommunetController extends Controller
             'commune_code' => $request->input('commune_code'),
             'commune_en_name' => $request->input('commune_en_name'),
             'commune_kh_name' => $request->input('commune_kh_name'),
-            'status' => 0,
+            'status' => $request->input('status'),
             // 'user_id' => $userId,
             'user_id' => $request->input('user_id', 1),
         ]);
@@ -75,7 +75,7 @@ class CommunetController extends Controller
             'commune_code' => $request->input('commune_code'),
             'commune_en_name' => $request->input('commune_en_name'),
             'commune_kh_name' => $request->input('commune_kh_name'),
-            'status' => $commune->status,
+            'status' =>  $request->input('status'),
             'user_id' => $request->input('user_id', $commune->user_id),
         ]);
 

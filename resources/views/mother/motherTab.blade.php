@@ -1,6 +1,57 @@
 @extends('layouts.layout')
 
 @section('content')
+@extends('cdn')
+@if (Session::has('success'))
+    <script>
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានរក្សាទុកដោយជោគជ័យ</h6>'
+        });
+    </script>
+@endif
+
+
+@if (Session::has('delete'))
+    <script>
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានលុបដោយជោគជ័យ។</h6>'
+        });
+    </script>
+@endif
+
+
+@if (Session::has('update'))
+    <script>
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000
+        });
+
+        Toast.fire({
+            icon: 'success',
+            title: '<h6 class="d-flex align-items-center" style="margin-left:10px">បានកែប្រែដោយជោគជ័យ។</h6>'
+        });
+    </script>
+@endif
+
     <div class="content-wrapper p-4">
         <div class="d-flex gap-2 my-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

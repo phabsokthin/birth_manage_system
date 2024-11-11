@@ -2,9 +2,9 @@
 <div class="modal fade" id="ModalDetail{{$pro->province_id}}" tabindex="-1" aria-labelledby="ModalLabel{{$pro->province_id}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title" id="ModalLabel{{$pro->province_id}}">ព័ត៌មានលម្អិត</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('province.show', $pro->province_id) }}" method="POST">
@@ -27,8 +27,12 @@
                         <label for="modify_date" class="form-label">កាលបរិច្ឆេទ</label>
                         <input type="date" class="form-control" id="modify_date{{$pro->province_id}}" name="modify_date" value="{{ $pro->modify_date }}" disabled>
                     </div>
-
-                    <div class="modal-footer">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">ស្ថានភាព</label>
+                        <input type="text" class="form-control" id="status{{$pro->province_id}}" name="status"
+                            value="{{ $pro->status == 1 ? 'Active' : 'Inactive' }}" disabled>
+                    </div>
+                    <div class="modal-footer bg-dark">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">យល់ស្រប</button>
                     </div>
                 </form>

@@ -36,7 +36,7 @@ class VillageController extends Controller
             'village_code' => $request->input('village_code'),
             'village_en_name' => $request->input('village_en_name'),
             'village_kh_name' => $request->input('village_kh_name'),
-            'status' => 0,
+            'status' => $request->input('status'),
             // 'user_id' => $userId,
             'user_id' => $request->input('user_id', 1),
         ]);
@@ -74,7 +74,7 @@ class VillageController extends Controller
             'village_code' => $request->input('village_code'),
             'village_en_name' => $request->input('village_en_name'),
             'village_kh_name' => $request->input('village_kh_name'),
-            'status' => $village->status,
+            'status' => $request->input('status'),
             'user_id' => $request->input('user_id', $village->user_id),
         ]);
 

@@ -4,9 +4,9 @@
 <div class="modal fade" id="ModalDetail{{$districts->dis_id}}" tabindex="-1" aria-labelledby="ModalLabel{{$districts->dis_id}}" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title" id="ModalLabel{{$districts->dis_id}}">ព័ត៌មានលម្អិត</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('district.show', $districts->dis_id) }}" method="POST">
@@ -39,8 +39,12 @@
                         <label for="dis_code" class="form-label">លេដកូដ</label>
                         <input type="text" class="form-control" id="dis_code" name="dis_code" value="{{$districts->dis_code}}" placeholder="ចូរបញ្ចូលលេខកូដ" disabled>
                     </div>
-
-                    <div class="modal-footer">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">ស្ថានភាព</label>
+                        <input type="text" class="form-control" id="status{{$districts->dis_id}}" name="status"
+                            value="{{ $districts->status == 1 ? 'Active' : 'Inactive' }}" disabled>
+                    </div>
+                    <div class="modal-footer bg-dark">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">យល់ស្រប</button>
                     </div>
                 </form>
