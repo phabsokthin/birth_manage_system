@@ -16,6 +16,7 @@ class BirthCertificateController extends Controller
     {
         $province = Province::all();
         $father = Father::all();
+        $mother = Mother::all();
         $births = DB::table('birth__certificates')
             ->leftJoin('fathers', 'fathers.father_id', "=", 'birth__certificates.father_id')
             ->leftJoin('mothers', 'mothers.mother_id', "=", "birth__certificates.mother_id")
@@ -33,6 +34,7 @@ class BirthCertificateController extends Controller
                 'communes.*',
                 'provinces.*',
                 'districts.*'
+
             )->get();
         return view('birthCertificate.certificateTab', compact('province', 'births'));
     }
@@ -41,12 +43,12 @@ class BirthCertificateController extends Controller
     public function getFathers()
     {
         $fathers = DB::table('fathers')
-        ->leftJoin('villages', 'villages.id', "=", "fathers.village_id")
-        ->leftJoin('districts', 'districts.dis_id', "=", "fathers.dis_id")
-        ->leftJoin('communes', 'communes.commune_id', "=", "fathers.commune_id")
-        ->leftJoin('provinces', "provinces.province_id", "=", "fathers.province_id")
-        ->orderBy('fathers.father_id', 'desc')
-        ->select('*')->get();
+            ->leftJoin('villages', 'villages.id', "=", "fathers.village_id")
+            ->leftJoin('districts', 'districts.dis_id', "=", "fathers.dis_id")
+            ->leftJoin('communes', 'communes.commune_id', "=", "fathers.commune_id")
+            ->leftJoin('provinces', "provinces.province_id", "=", "fathers.province_id")
+            ->orderBy('fathers.father_id', 'desc')
+            ->select('*')->get();
         return response()->json($fathers);
     }
 
@@ -61,7 +63,7 @@ class BirthCertificateController extends Controller
             ->leftJoin('provinces', "provinces.province_id", "=", "mothers.province_id")
             ->orderBy('mothers.mother_id', 'desc')
             ->select('*')->get();
-            
+
         return response()->json($mothers);
     }
 
@@ -237,45 +239,70 @@ class BirthCertificateController extends Controller
         return view('birthCertificate.printCertificate');
     }
 
+
     public function print_village_certificate_id($id)
     {
         $births = DB::table('birth__certificates')
-            ->leftJoin('fathers', 'fathers.father_id', "=", 'birth__certificates.father_id')
-            ->leftJoin('mothers', 'mothers.mother_id', "=", "birth__certificates.mother_id")
-            ->leftJoin('villages', 'villages.id', "=", "birth__certificates.village_id")
-            ->leftJoin('districts', 'districts.dis_id', "=", "birth__certificates.dis_id")
-            ->leftJoin('communes', 'communes.commune_id', "=", "birth__certificates.commune_id")
-            ->leftJoin('provinces', "provinces.province_id", "=", "birth__certificates.province_id")
-            ->where("birth_id", $id)
+            ->leftJoin('fathers', 'fathers.father_id', '=', 'birth__certificates.father_id')
+            ->leftJoin('mothers', 'mothers.mother_id', '=', 'birth__certificates.mother_id')
+            ->leftJoin('villages as fv', 'fv.id', '=', 'fathers.village_id') // Father's village
+            ->leftJoin('communes as fc', 'fc.commune_id', '=', 'fathers.commune_id') // Father's commune
+            ->leftJoin('districts as fd', 'fd.dis_id', '=', 'fathers.dis_id') // Father's district
+            ->leftJoin('provinces as fp', 'fp.province_id', '=', 'fathers.province_id') // Father's province
+            ->leftJoin('villages as mv', 'mv.id', '=', 'mothers.village_id') // Mother's village
+            ->leftJoin('communes as mc', 'mc.commune_id', '=', 'mothers.commune_id') // Mother's commune
+            ->leftJoin('districts as md', 'md.dis_id', '=', 'mothers.dis_id') // Mother's district
+            ->leftJoin('provinces as mp', 'mp.province_id', '=', 'mothers.province_id') // Mother's province
+            ->leftJoin('villages', 'villages.id', '=', 'birth__certificates.village_id')
+            ->leftJoin('districts', 'districts.dis_id', '=', 'birth__certificates.dis_id')
+            ->leftJoin('communes', 'communes.commune_id', '=', 'birth__certificates.commune_id')
+            ->leftJoin('provinces', 'provinces.province_id', '=', 'birth__certificates.province_id')
+            ->where('birth__certificates.birth_id', $id)
             ->select(
                 'birth__certificates.*',
-                'fathers.fname_kh as fatherName_kh',
-                'fathers.lname_kh as lfatherName_kh',
-                'fathers.nationality as fnation',
-                'fathers.fname_en as ffnameEn',
-                'fathers.lname_en as flnameEn',
-                'fathers.day as fday',
-                'fathers.month as fmonth',
-                'fathers.year as fyear',
-                'villages.village_kh_name as fvillage_kh',
-                'communes.commune_kh_name as fcommune_kh',
-                'districts.district_kh_name as fdistrict_kh',
-                'provinces.province_kh_name as fprovince_kh',
-                'mothers.fname_kh as fmotherName_kh',
-                'mothers.lname_kh as lmotherName_kh',
-                'mothers.nationality as mnation',
-                'mothers.fname_en as mfnameEn',
-                'mothers.lname_en as mlnameEn',
-                'mothers.day as mday',
-                'mothers.month as mmonth',
-                'mothers.year as myear',
+                // Father details
+                'fathers.fname_kh as father_name_kh',
+                'fathers.lname_kh as father_last_name_kh',
+                'fathers.nationality as father_nationality',
+                'fathers.fname_en as father_first_name_en',
+                'fathers.lname_en as father_last_name_en',
+                'fathers.day as father_birth_day',
+                'fathers.month as father_birth_month',
+                'fathers.year as father_birth_year',
+                'fv.village_kh_name as father_village',
+                'fc.commune_kh_name as father_commune',
+                'fd.district_kh_name as father_district',
+                'fp.province_kh_name as father_province',
+                // Mother details
+                'mothers.fname_kh as mother_name_kh',
+                'mothers.lname_kh as mother_last_name_kh',
+                'mothers.nationality as mother_nationality',
+                'mothers.fname_en as mother_first_name_en',
+                'mothers.lname_en as mother_last_name_en',
+                'mothers.day as mother_birth_day',
+                'mothers.month as mother_birth_month',
+                'mothers.year as mother_birth_year',
+                'mv.village_kh_name as mother_village',
+                'mc.commune_kh_name as mother_commune',
+                'md.district_kh_name as mother_district',
+                'mp.province_kh_name as mother_province',
+                // Birth location details
+                'villages.village_kh_name as birth_village',
+                'communes.commune_kh_name as birth_commune',
+                'districts.district_kh_name as birth_district',
+                'provinces.province_kh_name as birth_province'
+            )
+            ->first();
 
-                'villages.*',
-                'communes.*',
-                'provinces.*',
-                'districts.*'
-            )->first();
-
+        // Pass the data to the view
         return view('birthCertificate.printCertificate', compact('births'));
     }
 }
+
+
+// <h1>Birth Certificate</h1>
+// <p>Father: {{ $birth->father_name_kh }} {{ $birth->father_last_name_kh }}</p>
+// <p>Father's Address: {{ $birth->father_village }}, {{ $birth->father_commune }}, {{ $birth->father_district }}, {{ $birth->father_province }}</p>
+// <p>Mother: {{ $birth->mother_name_kh }} {{ $birth->mother_last_name_kh }}</p>
+// <p>Mother's Address: {{ $birth->mother_village }}, {{ $birth->mother_commune }}, {{ $birth->mother_district }}, {{ $birth->mother_province }}</p>
+// <p>Birthplace: {{ $birth->birth_village }}, {{ $birth->birth_commune }}, {{ $birth->birth_district }}, {{ $birth->birth_province }}</p>

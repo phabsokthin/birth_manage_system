@@ -80,7 +80,7 @@ class CommunetController extends Controller
         ]);
 
         // Redirect back with success message
-        return redirect()->route('commune.index')->with('success', 'Commune updated successfully!');
+        return redirect()->route('commune.index')->with('update', 'Commune updated successfully!');
     }
 
     /**
@@ -91,7 +91,7 @@ class CommunetController extends Controller
         $communes = Commune::findOrFail($commune_id);
         $communes->delete();
 
-        return redirect()->route('commune.index')->with('success', 'Commune deleted successfully!');
+        return redirect()->route('commune.index')->with('delete', 'Commune deleted successfully!');
     }
 
     public function deleteAll(Request $request)
@@ -99,7 +99,7 @@ class CommunetController extends Controller
         $ids = $request->input('ids');
         if ($ids) {
             Commune::destroy($ids);
-            return redirect()->back()->with('success', 'Selected communes deleted successfully.');
+            return redirect()->back()->with('delete', 'Selected communes deleted successfully.');
         }
         return redirect()->back()->with('error', 'No communes selected for deletion.');
     }

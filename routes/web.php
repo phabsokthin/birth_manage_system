@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MotherController;
 use App\Http\Controllers\CommunetController;
+use App\Http\Controllers\CopyBirhtCertificateController;
+use App\Http\Controllers\CopyBirthController;
 use App\Http\Controllers\DistrictController;
 
 use App\Http\Controllers\ProvinceController;
@@ -64,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/viewDetailsMother/{id}', "view_details")->name('view_details.mother');
     });
 
-    Route::controller(BirthCertificateController::class)->group(function () {
+    Route::controller(BirthCertificateController::class)->group(callback: function () {
         Route::get('/tab_certificate', 'index')->name('tab.birthcertificate');
         Route::get('/get-fathers', 'getFathers');
         Route::get('/get-mothers', 'getMothers');
@@ -73,10 +75,24 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create_birthCertificate', 'create')->name('create.birthCertificate');
         Route::get('/delete_birthCertificate/{id}', 'delete_birth')->name('delete.birthCertificate');
         Route::get('/get_birthCertificateById/{id}', 'get_birth_certificate_Id')->name('get_birth.birthCertificate');
-        Route::post('/update_birth_certificate/{id}','update_birth_certificate')->name('update_.birth_certificate');
+        Route::post('/update_birth_certificate/{id}', 'update_birth_certificate')->name('update_.birth_certificate');
         Route::get('/print_certificate', 'print_birth_certificate')->name('print_birth_certificate');
         Route::get('/print_Certificate/{id}', action: 'print_village_certificate_id')->name('print_certificate.birth_certificate');
     });
+    Route::controller(CopyBirthController::class)->group(function () {
+        Route::get('/tab_copy_certificate', 'index')->name('copytab.birthcertificate');
+        Route::get('/get-fathers', 'getFathers');
+        Route::get('/get-mothers', 'getMothers');
+        Route::get('/get-father-details/{id}', 'getFatherDetails');
+        Route::get('/get-mother-details/{id}', 'getMotherDetails');
+        Route::post('/create_copy_birth', 'create')->name('create_copy.birthCertificate');
+        Route::get('/delete_copy_birthCertificate/{id}', 'delete_copy_birth')->name('delete_copy.birthCertificate');
+        Route::get('/get_copybirhtById/{id}', 'get_birth_certificate_Id')->name('get_Copy_birth.birthCertificate');
+        Route::post('/update_copy_birth/{id}', 'update_copy_birth')->name('update_copy.birth_certificate');
+        Route::get('/print_copy_certificate', 'print_copy_birth')->name('print_copy_birth_certificate');
+        Route::get('/print_copy_Certificate/{id}', action: 'print_copy_certificate_id')->name('print.copy_birth_certificate');
+    });
+    
 
     Route::get("/home", [HomeController::class, 'index'])->name('dashbaord');
     Route::get("/test", [HomeController::class, 'test'])->name('testing');
@@ -95,7 +111,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/province/{province_id}', 'show')->name('province.show');
         Route::delete('/province_deleteall', 'deleteall')->name('province.deleteall');
         Route::patch('/province/status/{provinceId}', 'updateStatus')->name('province.updateStatus');
-
     });
 
     Route::patch('/province/status/{provinceId}', [ProvinceController::class, 'updateStatus']);
@@ -132,11 +147,13 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-   Route::controller(ReportsController::class)->group(function () {
-    Route::get('/report_birth','report_birth')->name('report_birth');
-   });
+    Route::controller(ReportsController::class)->group(function () {
+        Route::get('/report_birth', 'report_birth')->name('report_birth');
+        Route::get('/parent_report', 'parentReport')->name('parentReport.report');
+        Route::get('/motherReport', 'motherReport')->name('motherReport.report');
+        Route::get('/report_copy_brith', 'report_copy_brith')->name('report_copy_brith.report');
+    });
 
 
     Route::delete('/logout_index', [AuthController::class, 'logout'])->name('logout');
-
 });

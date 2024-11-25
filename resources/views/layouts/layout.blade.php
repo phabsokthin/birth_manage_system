@@ -8,38 +8,44 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@100..900&display=swap" rel="stylesheet">
+
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
+
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+   
+    <!-- FontAwesome -->
+<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+
+<!-- Ionicons -->
+<link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
+<!-- JQVMap -->
+<link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+
+<!-- summernote -->
+<link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+
+
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1MjbNfrmYb3P9gx" crossorigin="anonymous"> --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css"> --}}
-
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
-
-    <!-- Bootstrap CSS -->
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}
 
     <!-- DataTables Bootstrap 4 CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap4.css">
@@ -76,15 +82,18 @@
 
                     </div>
                     <a class="nav-link d-flex align-items-center" data-widget="navbar-search" href="#" role="button">
-                       <div class="d-flex align-items-center">
-                        <p  class=" mr-2" style=" font-family: 'Moul', cursive;margin-top: 20px">ប្រវត្តិរូប៖</p>
-                        <p class="mt-3 mr-2" style="text-transform: capitalize; font-weight: bold;">
-                            {{ Auth::user()->name }}
-                        </p>
-                       </div>
+                        <div class="d-flex align-items-center">
+                            <p class=" mr-2" style=" font-family: 'Moul', cursive;margin-top: 20px">ប្រវត្តិរូប៖</p>
+                            <p class="mt-3 mr-2" style="text-transform: capitalize; font-weight: bold;">
+                                {{ Auth::user()->name }}
+                            </p>
+                        </div>
 
                         <div style="width: 45px;height:45px" class="bg-light   rounded-pill d-flex justify-content-center align-items-center">
-                            <svg style="color: gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <svg style="color: gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
                         </div>
                     </a>
                 </li>
@@ -159,6 +168,19 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('copytab.birthcertificate') }}" 
+                            class="nav-link {{ Route::is('copytab.birthcertificate') ? 'bg-info' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text">
+                                    <path d="M6 2H18a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                                    <path d="M6 2v16" />
+                                    <path d="M10 12h4" />
+                                    <path d="M10 16h4" />
+                                </svg>
+                                <p>សំបុត្របញ្ជាក់កំណើត</p>
+                            </a>
+                        </li>
+
                         <li class="nav-item {{ Route::is('tab.father') || Route::is('test2') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -298,7 +320,7 @@
                         </li> --}}
 
 
-                        <li class="nav-item {{ Route::is('report_birth') ? 'menu-open' : '' }}">
+                        <li class="nav-item {{ Route::is('report_birth') ||Route::is('report_copy_brith.report')|| Route::is('parentReport.report') || Route::is('motherReport.report') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link ">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -314,7 +336,7 @@
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview" style="display;  {{ Route::is('report_birth') }}">
+                            <ul class="nav nav-treeview" style="display; {{ Route::is('report_birth') }}">
 
                                 <li class="nav-item">
                                     <a href="{{ route('report_birth') }}" class="nav-link {{ Route::is('report_birth') ? 'bg-info' : '' }}">
@@ -328,9 +350,21 @@
                                         <p>របាយការណ៍សំបុត្រកំណើត</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('report_copy_brith.report') }}" class="nav-link {{ Route::is('report_copy_brith.report') ? 'bg-info' : '' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-move-right">
+                                            <path d="M18 8L22 12L18 16" />
+                                            <path d="M2 12H22" />
+                                        </svg>
+                                        <p>របាយការណ៍សេចក្តីចម្លង</p>
+                                    </a>
+                                </li>
 
                                 <li class="nav-item">
-                                    <a href="" class="nav-link ">
+                                    <a href="{{ route('parentReport.report') }}" class="nav-link {{ Route::is('parentReport.report') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -338,11 +372,12 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>របាយការណ៍ភូមិ</p>
+                                        <p>របាយការណ៍ឪពុក</p>
                                     </a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a href="" class="nav-link ">
+                                    <a href="{{ route('motherReport.report') }}" class="nav-link {{ Route::is('motherReport.report') ? 'bg-info' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -350,38 +385,27 @@
                                             <path d="M18 8L22 12L18 16" />
                                             <path d="M2 12H22" />
                                         </svg>
-                                        <p>របាយការណ៍ឃុំ</p>
+                                        <p>របាយការណ៍ម្តាយ</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link ">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-move-right">
-                                            <path d="M18 8L22 12L18 16" />
-                                            <path d="M2 12H22" />
-                                        </svg>
-                                        <p>របាយការណ៍ស្រុក/ខេត្ត</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
 
                         {{-- <li class="nav-item">
                             <a href="{{ route('testing') }}" class="nav-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-lock-keyhole">
-                                    <circle cx="12" cy="16" r="1" />
-                                    <rect x="3" y="10" width="18" height="12" rx="2" />
-                                    <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-                                </svg>
-                                <p>
-                                    ប្តូរពាក្យសម្ងាត់
-                                </p>
-                            </a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-lock-keyhole">
+                            <circle cx="12" cy="16" r="1" />
+                            <rect x="3" y="10" width="18" height="12" rx="2" />
+                            <path d="M7 10V7a5 5 0 0 1 10 0v3" />
+                        </svg>
+                        <p>
+                            ប្តូរពាក្យសម្ងាត់
+                        </p>
+                        </a>
                         </li> --}}
 
                         <li class="nav-item">
@@ -392,15 +416,15 @@
                                     @csrf
                                     @method("DELETE")
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="lucide lucide-square-arrow-out-up-left">
-                                    <path d="M13 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6" />
-                                    <path d="m3 3 9 9" />
-                                    <path d="M3 9V3h6" />
-                                </svg>
-                                    <button class="btn btn-danger btn-sm rounded-pill" onclick="return confirm('តើអ្នកចង់ចាកចេញមែនទេ?')" >ចាក់ចេញ</button>
-                                   </form>
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="lucide lucide-square-arrow-out-up-left">
+                                        <path d="M13 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-6" />
+                                        <path d="m3 3 9 9" />
+                                        <path d="M3 9V3h6" />
+                                    </svg>
+                                    <button class="btn btn-danger btn-sm rounded-pill" onclick="return confirm('តើអ្នកចង់ចាកចេញមែនទេ?')">ចាក់ចេញ</button>
+                                </form>
 
 
                             </a>
@@ -444,56 +468,62 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3+oEzE5e1g2z5jAXf5gSk8Jp1eKB" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    <!-- DataTables JS -->
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+<!-- Bootstrap 4 -->
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- ChartJS -->
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+
+<!-- Sparkline -->
+<script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
+
+<!-- JQVMap -->
+<script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+
+<!-- daterangepicker -->
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+<!-- Summernote -->
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+
+<!-- overlayScrollbars -->
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+<!-- AdminLTE App -->
+<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('dist/js/demo.js') }}"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 
 
-    {{-- <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script> --}}
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
-    <!-- Bootstrap JS -->
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script> --}}
 
-    <!-- DataTables JS -->
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap4.js"></script>
     <!-- Initialize DataTable -->
