@@ -14,28 +14,34 @@ class CopyBirthController extends Controller
 {
     public function index()
     {
-        $province = Province::all();
-        $father = Father::all();
-        $mother = Mother::all();
-        $copybirths = DB::table('copy_births')
-            ->leftJoin('fathers', 'fathers.father_id', "=", 'copy_births.father_id')
-            ->leftJoin('mothers', 'mothers.mother_id', "=", "copy_births.mother_id")
-            ->leftJoin('villages', 'villages.id', "=", "copy_births.village_id")
-            ->leftJoin('districts', 'districts.dis_id', "=", "copy_births.dis_id")
-            ->leftJoin('communes', 'communes.commune_id', "=", "copy_births.commune_id")
-            ->leftJoin('provinces', "provinces.province_id", "=", "copy_births.province_id")
-            ->select(
-                'copy_births.*',
-                'fathers.fname_kh as fatherName_kh',
-                'fathers.lname_kh as lfatherName_kh',
-                'mothers.fname_kh as fmotherName_kh',
-                'mothers.lname_kh as lmotherName_kh',
-                'villages.*',
-                'communes.*',
-                'provinces.*',
-                'districts.*'
-            )->get();
-        return view('copybirhtcertificate.copycertificateTab', compact('province', 'copybirths'));
+
+        $copybirths = CopyBirth::all();
+        $province= Province::all();
+
+        return view('copybirhtcertificate.copycertificateTab', compact( 'province','copybirths'));
+        
+        // $province = Province::all();
+        // $father = Father::all();
+        // $mother = Mother::all();
+        // $copybirths = DB::table('copy_births')
+        //     ->leftJoin('fathers', 'fathers.father_id', "=", 'copy_births.father_id')
+        //     ->leftJoin('mothers', 'mothers.mother_id', "=", "copy_births.mother_id")
+        //     ->leftJoin('villages', 'villages.id', "=", "copy_births.village_id")
+        //     ->leftJoin('districts', 'districts.dis_id', "=", "copy_births.dis_id")
+        //     ->leftJoin('communes', 'communes.commune_id', "=", "copy_births.commune_id")
+        //     ->leftJoin('provinces', "provinces.province_id", "=", "copy_births.province_id")
+        //     ->select(
+        //         'copy_births.*',
+        //         'fathers.fname_kh as fatherName_kh',
+        //         'fathers.lname_kh as lfatherName_kh',
+        //         'mothers.fname_kh as fmotherName_kh',
+        //         'mothers.lname_kh as lmotherName_kh',
+        //         'villages.*',
+        //         'communes.*',
+        //         'provinces.*',
+        //         'districts.*'
+        //     )->get();
+        // return view('copybirhtcertificate.copycertificateTab', compact('province', 'copybirths'));
     }
 
     public function getFathers()

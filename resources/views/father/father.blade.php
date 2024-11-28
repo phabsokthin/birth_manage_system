@@ -71,10 +71,10 @@
                             </td>
                             <td align="center">{{ $father->day }}-{{ $father->month }}-{{ $father->year }}</td>
                             <td>{{ $father->job_title }}</td>
-                            <td>{{ $father->village_kh_name }} {{ $father->village_en_name }}</td>
-                            <td>{{ $father->commune_kh_name }} {{ $father->commune_en_name }}</td>
-                            <td>{{ $father->district_kh_name }} {{ $father->district_en_name }}</td>
-                            <td>{{ $father->province_kh_name }} {{ $father->province_en_name }}</td>
+                            <td>{{ $father->village_kh_name }} </td>
+                            <td>{{ $father->commune_kh_name }} </td>
+                            <td>{{ $father->district_kh_name }} </td>
+                            <td>{{ $father->province_kh_name }} </td>
                             <td>
 
                                 <a href="{{ route('view_details.father', $father->father_id) }}" class="btn btn-warning btn-xs">

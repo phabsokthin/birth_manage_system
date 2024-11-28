@@ -13,21 +13,21 @@ class Father extends Model
 
     public function village()
     {
-        return $this->belongsTo(Village::class, 'village_id');
+        return $this->belongsTo(Village::class, 'village_kh_name');
     }
 
     public function commune()
     {
-        return $this->belongsTo(Commune::class, 'commune_id');
+        return $this->belongsTo(Commune::class, 'commune_kh_name');
     }
 
     public function district()
     {
-        return $this->belongsTo(District::class, 'dis_id');
+        return $this->belongsTo(District::class, 'district_kh_name');
     }
 
     public function province()
     {
-        return $this->belongsTo(Province::class, 'province_id');
+        return $this->belongsTo(Province::class, 'province_kh_name');
     }
 }

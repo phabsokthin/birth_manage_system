@@ -85,207 +85,671 @@
     <fieldset class="scheduler-border">
         <legend class="scheduler-border">បង្កើតសំបុត្របញ្ជាក់កំណើត</legend>
 
-        <!-- Other form fields -->
-
         <div class="control-group">
+            <div class="mt-3 d-flex gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                    <path d="M3 10h18" />
+                    <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                </svg>
+                <h5 class="ml-2">រដ្ធាបាលស្រុក</h5>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="">ខេត្ត: *</label>
+                    <input type="text" class="form-control" required placeholder="ខេត្ត" name="fname_kh">
+                </div>
+                <div class="col-md-3">
+                    <label for="">ស្រុក: *</label>
+                    <input type="text" class="form-control" required placeholder="ស្រុក" name="lname_kh">
+                </div>
+                <div class="col-md-3">
+                    <label for="">ឃុំ: *</label>
+                    <input type="text" class="form-control" required placeholder="ឃុំ" name="fname_en">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="">លម្អិត: *</label>
+            </div>
 
-            <div class="row">
+            <!-- date note -->
+            <div class="mt-3 d-flex gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-book">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M20 2H6.5A2.5 2.5 0 0 0 4 4.5v15" />
+                    <path d="M20 2v15" />
+                    <path d="M12 2v15" />
+                </svg>
+                <h5 class="ml-2">ព័ត៌មានសៀវភៅ</h5>
+            </div>
+
+            <div class="row ">
                 <div class="col-md-3">
-                    <label for="">លេខសំបុត្របញ្ជាក់កំណើត: *</label>
-                    <input type="text" class="form-control" required placeholder="លេខសំបុត្របញ្ជាក់កំណើត" name="copy_no">
-                </div>
-                <div class="col-md-3">
-                    <label for="">ចុះលេខសំបុត្របញ្ជាក់កំណើត: *</label>
-                    <input type="text" class="form-control" required placeholder="ចុះលេខសំបុត្របញ្ជាក់កំណើត" name="copy_note">
+                    <label for="">លេខសំបុត្រកំណើត: *</label>
+                    <input type="text" class="form-control" required placeholder="លេខសំបុត្រកំណើត" name="birth_no">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="">នាមត្រកូល(ខ្មែរ): *</label>
-                    <input type="text" class="form-control" required placeholder="នាមត្រកូល(ខ្មែរ)" name="fname_kh">
+                    <label for="">លេខ: *</label>
+                    <input type="text" class="form-control" required placeholder="ចុះលេខ" name="fname_kh">
                 </div>
                 <div class="col-md-3">
-                    <label for="">កិត្តិនាម(ខ្មែរ): *</label>
-                    <input type="text" class="form-control" required placeholder="កិត្តិនាម(ខ្មែរ)" name="lname_kh">
-                </div>
-                <div class="col-md-3">
-                    <label for="">នាមត្រកូល(ឡាតាំង): *</label>
-                    <input type="text" class="form-control" required placeholder="នាមត្រកូល(ឡាតាំង)" name="fname_en">
-                </div>
-                <div class="col-md-3">
-                    <label for="">កិត្តិនាម(ឡាតាំង): *</label>
-                    <input type="text" class="form-control" required placeholder="កិត្តិនាម(ឡាតាំង)" name="lname_en">
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <label for="">ភេទ: *</label>
-                    <select name="gender" required class="form-control" id="">
-                        <option value="">--ជ្រើសរើស--</option>
-                        <option value="ប្រុស">ប្រុស</option>
-                        <option value="ស្រី">ស្រី</option>
+                    <label for="">ចុះថ្ងៃទី: *</label>
+                    <select name="day" required id="day" class="form-control">
+                        <option value="">--ជ្រើសរើសថ្ងៃ--</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="">លេខទូរស័ព្ទ: *</label>
-                    <input type="text" class="form-control" required placeholder="លេខទូរស័ព្ទ" name="phones">
-                </div>
-                <div class="col-md-3">
-                    <label for="">សញ្ជាត្តិ</label>
-                    <input type="text" class="form-control" placeholder="សញ្ជាត្តិ" name="national">
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">រូបថត(4x6)</label>
-                        <input type="file" name="photo" id="imageValide" class="form-control">
-                        <div id="image-holder_one" class=""></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="search-dropdown" style="position: relative;">
-                    <label for="">ឪពុកឈ្មោះ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayFather" style="cursor: pointer;">
-                            --ជ្រើសរើសឪពុកឈ្មោះ--</div>
-                        <div class="dropdown-content p-2" id="dropdownContentFather"
-                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
-                            <input type="text" class="form-control" id="searchInputFather"
-                                placeholder="ស្វែងរកឪពុកឈ្មោះ">
-                            <ul id="dropdownListFather" style="list-style: none; padding: 0; margin: 0;"></ul>
+                    <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                        <label for="">ខែ: *</label>
+                        <div>
+                            <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                            <div class="dropdown-content p-2" id="dropdownContentMonth">
+                                <input type="text" class="form-control" id="searchInputMonth"
+                                    placeholder="ស្វែងរកខែ">
+                                <ul id="dropdownListMonth"></ul>
+                            </div>
                         </div>
-                        <input type="hidden" id="selectedFatherName">
                     </div>
-                </div>
-                <input type="hidden" required name="selected_father" id="selectedFatherID" value="">
-            </div>
-            <div class="col-md-5 mt-4 ml-5" id="fatherDetailsContainer">
-                <h5>លម្អិត:</h5>
-                <div id="fatherDetails">
-                </div>
-            </div>
-        </div>
 
-        <hr>
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="search-dropdown" style="position: relative;">
-                    <label for="">ម្តាយឈ្មោះ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayMother" style="cursor: pointer;">
-                            --ជ្រើសរើសម្តាយ--
-                        </div>
-                        <div class="dropdown-content p-2" id="dropdownContentMother"
-                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
-                            <input type="text" class="form-control" id="searchInputMother"
-                                placeholder="ស្វែងរកម្តាយឈ្មោះ">
-                            <ul id="dropdownListMother" style="list-style: none; padding: 0; margin: 0;"></ul>
-                        </div>
-                        <input type="hidden" id="selectedMotherName">
-                    </div>
-                </div>
-
-                <input type="hidden" required name="selected_mother" id="selectedMotherID" value="">
-            </div>
-
-
-            <div class="col-md-5 mt-5 ml-5" id="motherDetailsContainer">
-                <h5>លម្អិត:</h5>
-                <div id="motherDetails">
-                </div>
-            </div>
-
-        </div>
-        <div class="mt-3 d-flex gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-moon">
-                <path d="M16 2v4" />
-                <path d="M8 2v4" />
-                <path d="M3 10h18" />
-                <path d="M21 12v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8" />
-                <path d="M12 15a4 4 0 0 1 0-8c.9 0 1.72.3 2.4.8a5 5 0 0 0 0 6.4 4 4 0 0 1-2.4.8Z" />
-            </svg>
-            <h5 class="ml-2">ចុះថ្ងៃខែឆ្នាំ</h5>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <label for="">នៅថ្ងៃ: *</label>
-                <select name="day_note" required id="day_note" class="form-control">
-                    <option value="">--ជ្រើសរើសថ្ងៃ--</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-
-                <label for="">នៅខែ: *</label>
-                <div>
-                    <div class="form-control" id="dropdownDisplayMonth_note">--ជ្រើសរើសខែ--</div>
-                    <div class="dropdown-content p-2" id="dropdownContentMonth_note">
-                        <input type="text" class="form-control" id="searchInputMonth_note"
-                            placeholder="ស្វែងរកខែ">
-                        <ul id="dropdownListMonth_note"></ul>
-                    </div>
                     {{-- for display name to backend --}}
-                    <input type="hidden" required name="selected_month_note" id="selectedMonth_note" value="">
+                    <input type="hidden" required name="selected_month" id="selectedMonth" value="">
                 </div>
-
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="">នៅឆ្នាំ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayYear_note">--ជ្រើសរើសឆ្នាំ--</div>
-                        <div class="dropdown-content p-2" id="dropdownContentYear_note" style="display: none;">
-                            <input type="text" class="form-control" id="searchInputYear_note"
-                                placeholder="ស្វែងរកឆ្នាំ">
-                            <ul id="dropdownListYear_note"></ul>
+                <div class="col-md-3">
+                    <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                        <label for="">ឆ្នាំ: *</label>
+                        <div>
+                            <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                            <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
+                                <input type="text" class="form-control" id="searchInputYear"
+                                    placeholder="ស្វែងរកឆ្នាំ">
+                                <ul id="dropdownListYear"></ul>
+                            </div>
                         </div>
-                        {{-- for display name to backend --}}
-                        <input type="hidden" name="selected_year_note" id="selectedYear_note" value="">
+                    </div>
+
+                    {{-- For backend --}}
+                    <input type="hidden" name="selected_year" id="selectedYear" value="">
+                </div>
+            </div>
+
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-baby">
+                        <circle cx="12" cy="4" r="2" />
+                        <path d="M14 10a2 2 0 0 0-4 0v4" />
+                        <path d="M12 20v-6" />
+                        <path d="M6 20h12" />
+                        <path d="M6 16l3.5-3" />
+                        <path d="M18 16l-3.5-3" />
+                    </svg>
+                    <span style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានទារក</span>
+                </legend>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមត្រកូល(ខ្មែរ)" name="fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួនទារក(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមខ្លួនទារក(ខ្មែរ)" name="lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួនទារក(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួនទារក(ឡាតាំង)" name="lname_en">
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
 
-                <label for="">ស្ថានភាព៖ *</label>
-                <select name="bstatus" class="form-control" id="">
-                    <option value="">--ជ្រើសរើស--</option>
-                    <option value="1">មិនបានធ្វើ</option>
-                    <option value="2">ធម្មតា</option>
-                    <option value="3">បានធ្វើ</option>
-                </select>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ភេទ: *</label>
+                        <select name="gender" required class="form-control" id="">
+                            <option value="">--ជ្រើសរើស--</option>
+                            <option value="ប្រុស">ប្រុស</option>
+                            <option value="ស្រី">ស្រី</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="national">
+                    </div>
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="day" required id="day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentMonth">
+                                    <input type="text" class="form-control" id="searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="dropdownListMonth"></ul>
+                                </div>
+                            </div>
+                        </div>
 
-            </div>
+                        {{-- for display name to backend --}}
+                        <input type="hidden" required name="selected_month" id="selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="dropdownListYear"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- For backend --}}
+                        <input type="hidden" name="selected_year" id="selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="province" id="province-select" required class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_district" id="selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayCommune"
+                                    onclick="toggleDropdown('dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentCommune">
+                                    <input type="text" class="form-control" id="searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_commune" id="selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayVillage"
+                                    onclick="toggleDropdown('dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentVillage">
+                                    <input type="text" class="form-control" id="searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_village" id="selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">:ប្រទេស *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="fname_en">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+            </fieldset>
+            <!-- father infor -->
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user">
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <h5 class="ml-2" style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានឪពុក</h5>
+
+                </legend>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមត្រកូល(ខ្មែរ)" name="fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមខ្លួន(ខ្មែរ)" name="lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ឡាតាំង)" name="lname_en">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="national">
+                    </div>
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="day" required id="day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentMonth">
+                                    <input type="text" class="form-control" id="searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="dropdownListMonth"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- for display name to backend --}}
+                        <input type="hidden" required name="selected_month" id="selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="dropdownListYear"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- For backend --}}
+                        <input type="hidden" name="selected_year" id="selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="province" id="province-select" required class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_district" id="selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayCommune"
+                                    onclick="toggleDropdown('dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentCommune">
+                                    <input type="text" class="form-control" id="searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_commune" id="selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayVillage"
+                                    onclick="toggleDropdown('dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentVillage">
+                                    <input type="text" class="form-control" id="searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_village" id="selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">:ប្រទេស *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="fname_en">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+            </fieldset>
+            <!-- mother infor -->
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user-female">
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-4a6 6 0 0 1 12 0v4" />
+                    </svg>
+                    <h5 class="ml-2" style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានម្តាយ</h5>
+                </legend>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមត្រកូល(ខ្មែរ)" name="fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" required placeholder="នាមខ្លួន(ខ្មែរ)" name="lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ឡាតាំង)" name="lname_en">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="national">
+                    </div>
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="day" required id="day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentMonth">
+                                    <input type="text" class="form-control" id="searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="dropdownListMonth"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- for display name to backend --}}
+                        <input type="hidden" required name="selected_month" id="selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="dropdownListYear"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- For backend --}}
+                        <input type="hidden" name="selected_year" id="selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="province" id="province-select" required class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_district" id="selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayCommune"
+                                    onclick="toggleDropdown('dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentCommune">
+                                    <input type="text" class="form-control" id="searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_commune" id="selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="dropdownDisplayVillage"
+                                    onclick="toggleDropdown('dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="dropdownContentVillage">
+                                    <input type="text" class="form-control" id="searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="selected_village" id="selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">ប្រទេស: *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="fname_en">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+
+            </fieldset>
         </div>
-        <div class="mt-3 d-flex gap-2">
+        <!-- current address -->
+        <div class="mt-1 d-flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-calendar-fold">
-                <path d="M8 2v4" />
-                <path d="M16 2v4" />
-                <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
-                <path d="M3 10h18" />
-                <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                stroke-linejoin="round" class="lucide lucide-map-pinned">
+                <path
+                    d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                <circle cx="12" cy="8" r="2" />
+                <path
+                    d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
             </svg>
-            <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+            <h5 class="ml-2">ធ្វើនៅ</h5>
         </div>
 
         <div class="row">
-            <div class="col-md-2">
-                <label for="">នៅថ្ងៃ: *</label>
+
+            <div class="col-md-3">
+                <label for="">ធ្វើនៅ: *</label>
+                <input type="text" class="form-control" placeholder="ធ្វើនៅ" name="fname_en">
+
+            </div>
+            <div class="col-md-3">
+                <label for="">ថ្ងៃទី: *</label>
                 <select name="day" required id="day" class="form-control">
                     <option value="">--ជ្រើសរើសថ្ងៃ--</option>
                 </select>
             </div>
-
             <div class="col-md-3">
                 <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
-                    <label for="">នៅខែ: *</label>
+                    <label for="">ខែ: *</label>
                     <div>
                         <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
                         <div class="dropdown-content p-2" id="dropdownContentMonth">
@@ -299,10 +763,9 @@
                 {{-- for display name to backend --}}
                 <input type="hidden" required name="selected_month" id="selectedMonth" value="">
             </div>
-
             <div class="col-md-3">
                 <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
-                    <label for="">នៅឆ្នាំ: *</label>
+                    <label for="">ឆ្នាំ: *</label>
                     <div>
                         <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
                         <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
@@ -317,96 +780,13 @@
                 <input type="hidden" name="selected_year" id="selectedYear" value="">
             </div>
 
-            <div class="col-md-4">
-                <label for="">មុខរបរ</label>
-                <textarea class="form-control" placeholder="មុខរបរ" name="job_title"></textarea>
-            </div>
         </div>
-
-
-
-
-        <div class="mt-1 d-flex gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-map-pinned">
-                <path
-                    d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
-                <circle cx="12" cy="8" r="2" />
-                <path
-                    d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
-            </svg>
-            <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-3">
-                <label for="">ខេត្ត: *</label>
-                <select name="province" id="province-select" required class="form-control">
-                    <option value="">--ជ្រើសរើស--</option>
-                    @foreach ($province as $pro)
-                    <option value="{{ $pro->province_id }}">{{ $pro->province_kh_name }}</option>
-                    @endforeach
-                </select>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">រូបថត(4x6)</label>
+                <input type="file" name="photo" id="imageValide" class="form-control">
+                <div id="image-holder_one" class=""></div>
             </div>
-
-            <div class="col-md-3">
-                <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
-                    <label for="">ស្រុក: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayDistrict"
-                            onclick="toggleDropdown('dropdownContentDistrict')">
-                            --ជ្រើសរើសស្រុក--
-                        </div>
-                        <div class="dropdown-content p-2" id="dropdownContentDistrict">
-                            <input type="text" class="form-control" id="searchInputDistrict"
-                                placeholder="ស្វែងរកស្រុក">
-                            <ul id="dropdownListDistrict"></ul>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="selected_district" id="selectedDistrict" value="">
-            </div>
-
-            <div class="col-md-3">
-                <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
-                    <label for="">ឃុំ/សង្កាត់: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayCommune"
-                            onclick="toggleDropdown('dropdownContentCommune')">
-                            --ជ្រើសរើស--
-                        </div>
-                        <div class="dropdown-content p-2" id="dropdownContentCommune">
-                            <input type="text" class="form-control" id="searchInputCommune"
-                                placeholder="ស្វែងរកឃុំ">
-                            <ul id="dropdownListCommune"></ul>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="selected_commune" id="selectedCommune" value="">
-            </div>
-
-            <div class="col-md-3">
-                <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
-                    <label for="">នៅភូមិ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayVillage"
-                            onclick="toggleDropdown('dropdownContentVillage')">
-                            --ជ្រើសរើស--
-                        </div>
-                        <div class="dropdown-content p-2" id="dropdownContentVillage">
-                            <input type="text" class="form-control" id="searchInputVillage"
-                                placeholder="ស្វែងរកភូមិ">
-                            <ul id="dropdownListVillage"></ul>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="selected_village" id="selectedVillage" value="">
-            </div>
-
-
-
         </div>
 
 

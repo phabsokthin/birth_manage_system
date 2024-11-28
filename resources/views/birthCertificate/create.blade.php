@@ -63,19 +63,19 @@
     /* Other styles */
     fieldset.scheduler-border {
         border: 1px groove #ddd !important;
-        padding: 0 1.4em 1.4em 1.4em !important;
+        padding: 0 1.1em 1.1em 1.1em !important;
         margin: 0 0 1.5em 0 !important;
-        box-shadow: 0px 0px 0px 0px #000;
+        /* box-shadow: 0px 0px 0px 0px #000; */
     }
 
     legend.scheduler-border {
         font-size: 1.2em !important;
-        font-weight: bold !important;
+        /* font-weight: bold !important; */
         text-align: left !important;
         border: none;
-        width: 200px;
+        width: 250px;
         margin-left: 5px;
-        padding-left: 10px;
+        padding-left: 5px;
     }
 </style>
 
@@ -83,204 +83,647 @@
 <form action="{{ route('create.birthCertificate') }}" method="POST" enctype="multipart/form-data" class="mt-4">
     @csrf
     <fieldset class="scheduler-border">
-        <legend class="scheduler-border">បង្កើតសំបុត្រកំណើត</legend>
+        <legend class="scheduler-border" style="color:blue; font-family: 'Koulen', sans-serif;">បង្កើតចម្លងសំបុត្រកំណើត</legend>
 
         <!-- Other form fields -->
 
         <div class="control-group">
-
+            <div class="mt-3 d-flex gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                    <path d="M8 2v4" />
+                    <path d="M16 2v4" />
+                    <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                    <path d="M3 10h18" />
+                    <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                </svg>
+                <h5 class="ml-2">រដ្ធាបាលស្រុក</h5>
+            </div>
             <div class="row">
+                <div class="col-md-3">
+                    <label for="">ខេត្ត: *</label>
+                    <input type="text" class="form-control" required placeholder="ខេត្ត" name="	province">
+                </div>
+                <div class="col-md-3">
+                    <label for="">ស្រុក: *</label>
+                    <input type="text" class="form-control" required placeholder="ស្រុក" name="district">
+                </div>
+                <div class="col-md-3">
+                    <label for="">ឃុំ: *</label>
+                    <input type="text" class="form-control" required placeholder="ឃុំ" name="commune">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="">លម្អិត: *</label>
+            </div>
+
+            <!-- date note -->
+            <div class="mt-3 d-flex gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-book">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M20 2H6.5A2.5 2.5 0 0 0 4 4.5v15" />
+                    <path d="M20 2v15" />
+                    <path d="M12 2v15" />
+                </svg>
+                <h5 class="ml-2">ព័ត៌មានសៀវភៅ</h5>
+            </div>
+
+            <div class="row ">
                 <div class="col-md-3">
                     <label for="">លេខសំបុត្រកំណើត: *</label>
-                    <input type="text"  class="form-control" required placeholder="លេខសំបុត្រកំណើត" name="birth_no">
+                    <input type="text" class="form-control" required placeholder="លេខសំបុត្រកំណើត" name="birth_no">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="">នាមត្រកូល(ខ្មែរ): *</label>
-                    <input type="text" class="form-control" required placeholder="នាមត្រកូល(ខ្មែរ)" name="fname_kh">
+                    <label for="">លេខ: *</label>
+                    <input type="text" class="form-control" required placeholder="ចុះលេខ" name="birth_note">
                 </div>
                 <div class="col-md-3">
-                    <label for="">កិត្តិនាម(ខ្មែរ): *</label>
-                    <input type="text" class="form-control" required placeholder="កិត្តិនាម(ខ្មែរ)" name="lname_kh">
-                </div>
-                <div class="col-md-3">
-                    <label for="">នាមត្រកូល(ឡាតាំង): *</label>
-                    <input type="text" class="form-control" required placeholder="នាមត្រកូល(ឡាតាំង)" name="fname_en">
-                </div>
-                <div class="col-md-3">
-                    <label for="">កិត្តិនាម(ឡាតាំង): *</label>
-                    <input type="text" class="form-control" required placeholder="កិត្តិនាម(ឡាតាំង)" name="lname_en">
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <label for="">ភេទ: *</label>
-                    <select name="gender" required class="form-control" id="">
-                        <option value="">--ជ្រើសរើស--</option>
-                        <option value="ប្រុស">ប្រុស</option>
-                        <option value="ស្រី">ស្រី</option>
+                    <label for="">ចុះថ្ងៃទី: *</label>
+                    <select name="note_day" required id="day" class="form-control">
+                        <option value="">--ជ្រើសរើសថ្ងៃ--</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="">លេខទូរស័ព្ទ: *</label>
-                    <input type="text" class="form-control" required placeholder="លេខទូរស័ព្ទ" name="phones">
+                    <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                        <label for="">ខែ: *</label>
+                        <div>
+                            <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                            <div class="dropdown-content p-2" id="dropdownContentMonth">
+                                <input type="text" class="form-control" id="searchInputMonth"
+                                    placeholder="ស្វែងរកខែ">
+                                <ul id="dropdownListMonth"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- for display name to backend --}}
+                    <input type="hidden" required name="note_month" id="selectedMonth" value="">
                 </div>
                 <div class="col-md-3">
-                    <label for="">សញ្ជាត្តិ</label>
-                    <input type="text" class="form-control" placeholder="សញ្ជាត្តិ" name="national">
+                    <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                        <label for="">ឆ្នាំ: *</label>
+                        <div>
+                            <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                            <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
+                                <input type="text" class="form-control" id="searchInputYear"
+                                    placeholder="ស្វែងរកឆ្នាំ">
+                                <ul id="dropdownListYear"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- For backend --}}
+                    <input type="hidden" name="note_year" id="selectedYear" value="">
                 </div>
+            </div>
+
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-baby">
+                        <circle cx="12" cy="4" r="2" />
+                        <path d="M14 10a2 2 0 0 0-4 0v4" />
+                        <path d="M12 20v-6" />
+                        <path d="M6 20h12" />
+                        <path d="M6 16l3.5-3" />
+                        <path d="M18 16l-3.5-3" />
+                    </svg>
+                    <span style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានទារក</span>
+                </legend>
 
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">រូបថត(4x6)</label>
-                        <input type="file" name="photo" id="imageValide" class="form-control">
-                        <div id="image-holder_one" class=""></div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ខ្មែរ)" name="ba_fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួនទារក(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួនទារក(ខ្មែរ)" name="ba_lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="ba_fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួនទារក(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួនទារក(ឡាតាំង)" name="ba_lname_en">
                     </div>
                 </div>
 
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">ស្ថានភាព៖ *</label>
-                        <select name="bstatus" class="form-control" id="">
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ភេទ: *</label>
+                        <select name="ba_gender" required class="form-control" id="">
                             <option value="">--ជ្រើសរើស--</option>
-                            <option value="1">មិនបានធ្វើ</option>
-                            <option value="2">ធម្មតា</option>
-                            <option value="3">បានធ្វើ</option>
+                            <option value="ប្រុស">ប្រុស</option>
+                            <option value="ស្រី">ស្រី</option>
                         </select>
                     </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="search-dropdown" style="position: relative;">
-                    <label for="">ឪពុកឈ្មោះ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayFather" style="cursor: pointer;">
-                            --ជ្រើសរើសឪពុកឈ្មោះ--</div>
-                        <div class="dropdown-content p-2" id="dropdownContentFather"
-                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
-                            <input type="text" class="form-control" id="searchInputFather"
-                                placeholder="ស្វែងរកឪពុកឈ្មោះ">
-                            <ul id="dropdownListFather" style="list-style: none; padding: 0; margin: 0;"></ul>
-                        </div>
-                        <input type="hidden" id="selectedFatherName">
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="ba_nationality">
                     </div>
                 </div>
-                <input type="hidden" required name="selected_father" id="selectedFatherID" value="">
-            </div>
-            <div class="col-md-5 mt-4 ml-5" id="fatherDetailsContainer">
-                <h5>លម្អិត:</h5>
-                <div id="fatherDetails">
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
                 </div>
-            </div>
-
-
-        </div>
-
-        <hr>
-        <div class="row">
-
-            <div class="col-md-6">
-                <div class="search-dropdown" style="position: relative;">
-                    <label for="">ម្តាយឈ្មោះ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayMother" style="cursor: pointer;">
-                            --ជ្រើសរើសម្តាយ--
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="ba_day"  id="ba_day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="ba_dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="ba_dropdownContentMonth">
+                                    <input type="text" class="form-control" id="ba_searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="ba_dropdownListMonth"></ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="dropdown-content p-2" id="dropdownContentMother"
-                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
-                            <input type="text" class="form-control" id="searchInputMother"
-                                placeholder="ស្វែងរកម្តាយឈ្មោះ">
-                            <ul id="dropdownListMother" style="list-style: none; padding: 0; margin: 0;"></ul>
+
+                        {{-- for display name to backend --}}
+                        <input type="hidden"  name="ba_month" id="ba_selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="ba_dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="ba_dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="ba_searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="ba_dropdownListYear"></ul>
+                                </div>
+                            </div>
                         </div>
-                        <input type="hidden" id="selectedMotherName">
+
+                        {{-- For backend --}}
+                        <input type="hidden" name="ba_year" id="ba_selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="ba_province" id="province-select"  class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="ba_dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('ba_dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="ba_dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="ba_searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="ba_dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="ba_district" id="ba_selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="ba_dropdownDisplayCommune"
+                                    onclick="toggleDropdown('ba_dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="ba_dropdownContentCommune">
+                                    <input type="text" class="form-control" id="ba_searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="ba_dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="ba_commune" id="ba_selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="ba_dropdownDisplayVillage"
+                                    onclick="toggleDropdown('ba_dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="ba_dropdownContentVillage">
+                                    <input type="text" class="form-control" id="ba_searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="ba_dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="ba_village" id="ba_selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">:ប្រទេស *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="ba_country">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+            </fieldset>
+            <!-- father infor -->
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user">
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <h5 class="ml-2" style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានឪពុក</h5>
+
+                </legend>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ខ្មែរ)" name="fa_fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ខ្មែរ)" name="fa_lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="fa_fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ឡាតាំង)" name="fa_lname_en">
                     </div>
                 </div>
 
-                <input type="hidden" required name="selected_mother" id="selectedMotherID" value="">
-            </div>
-
-
-            <div class="col-md-5 mt-5 ml-5" id="motherDetailsContainer">
-                <h5>លម្អិត:</h5>
-                <div id="motherDetails">
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="fa_nationality">
+                    </div>
                 </div>
-            </div>
-
-        </div>
-
-        <div class="mt-3 d-flex gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-calendar-fold">
-                <path d="M8 2v4" />
-                <path d="M16 2v4" />
-                <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
-                <path d="M3 10h18" />
-                <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
-            </svg>
-            <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <label for="">នៅថ្ងៃ: *</label>
-                <select name="day" required id="day" class="form-control">
-                    <option value="">--ជ្រើសរើសថ្ងៃ--</option>
-                </select>
-            </div>
-
-            <div class="col-md-3">
-                <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
-                    <label for="">នៅខែ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
-                        <div class="dropdown-content p-2" id="dropdownContentMonth">
-                            <input type="text" class="form-control" id="searchInputMonth"
-                                placeholder="ស្វែងរកខែ">
-                            <ul id="dropdownListMonth"></ul>
+                <!-- DOB of father  -->
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="fa_day"  id="fa_day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="fa_dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="fa_dropdownContentMonth">
+                                    <input type="text" class="form-control" id="fa_searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="fa_dropdownListMonth"></ul>
+                                </div>
+                            </div>
                         </div>
+
+                        {{-- for display name to backend --}}
+                        <input type="hidden"  name="fa_month" id="fa_selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="fa_dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="fa_dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="fa_searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="fa_dropdownListYear"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- For backend --}}
+                        <input type="hidden" name="fa_year" id="fa_selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="fa_province" id="fa_province-select"  class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="fa_dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('fa_dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="fa_dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="fa_searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="fa_dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="fa_district" id="fa_selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="fa_dropdownDisplayCommune"
+                                    onclick="toggleDropdown('fa_dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="fa_dropdownContentCommune">
+                                    <input type="text" class="form-control" id="fa_searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="fa_dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="fa_commune" id="fa_selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="fa_dropdownDisplayVillage"
+                                    onclick="toggleDropdown('fa_dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="fa_dropdownContentVillage">
+                                    <input type="text" class="form-control" id="fa_searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="fa_dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="fa_village" id="fa_selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">:ប្រទេស *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="fa_country">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+            </fieldset>
+            <!-- mother infor -->
+            <fieldset class="scheduler-border">
+                <legend class="scheduler-border d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user-female">
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M6 21v-4a6 6 0 0 1 12 0v4" />
+                    </svg>
+                    <h5 class="ml-2" style="color:blue; font-family: 'Koulen', sans-serif;">ព័ត៌មានម្តាយ</h5>
+                </legend>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ខ្មែរ)" name="mo_fname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ខ្មែរ): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ខ្មែរ)" name="mo_lname_kh">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមត្រកូល(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមត្រកូល(ឡាតាំង)" name="mo_fname_en">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">នាមខ្លួន(ឡាតាំង): *</label>
+                        <input type="text" class="form-control" placeholder="នាមខ្លួន(ឡាតាំង)" name="mo_lname_en">
                     </div>
                 </div>
 
-                {{-- for display name to backend --}}
-                <input type="hidden" required name="selected_month" id="selectedMonth" value="">
-            </div>
-
-            <div class="col-md-3">
-                <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
-                    <label for="">នៅឆ្នាំ: *</label>
-                    <div>
-                        <div class="form-control" id="dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
-                        <div class="dropdown-content p-2" id="dropdownContentYear" style="display: none;">
-                            <input type="text" class="form-control" id="searchInputYear"
-                                placeholder="ស្វែងរកឆ្នាំ">
-                            <ul id="dropdownListYear"></ul>
-                        </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">សញ្ជាតិ</label>
+                        <input type="text" class="form-control" placeholder="សញ្ជាតិ" name="mo_nationality">
                     </div>
                 </div>
+                <div class="mt-3 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-fold">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
+                        <path d="M3 10h18" />
+                        <path d="M15 22v-4a2 2 0 0 1 2-2h4" />
+                    </svg>
+                    <h5 class="ml-2">ថ្ងៃខែឆ្នាំកំណើត</h5>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="">ថ្ងៃទី: *</label>
+                        <select name="mo_day"  id="mo_day" class="form-control">
+                            <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ខែ: *</label>
+                            <div>
+                                <div class="form-control" id="mo_dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                                <div class="dropdown-content p-2" id="mo_dropdownContentMonth">
+                                    <input type="text" class="form-control" id="mo_searchInputMonth"
+                                        placeholder="ស្វែងរកខែ">
+                                    <ul id="mo_dropdownListMonth"></ul>
+                                </div>
+                            </div>
+                        </div>
 
-                {{-- For backend --}}
-                <input type="hidden" name="selected_year" id="selectedYear" value="">
-            </div>
+                        {{-- for display name to backend --}}
+                        <input type="hidden"  name="mo_month" id="mo_selectedMonth" value="">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                            <label for="">ឆ្នាំ: *</label>
+                            <div>
+                                <div class="form-control" id="mo_dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                                <div class="dropdown-content p-2" id="mo_dropdownContentYear" style="display: none;">
+                                    <input type="text" class="form-control" id="mo_searchInputYear"
+                                        placeholder="ស្វែងរកឆ្នាំ">
+                                    <ul id="mo_dropdownListYear"></ul>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="col-md-4">
-                <label for="">មុខរបរ</label>
-                <textarea class="form-control" placeholder="មុខរបរ" name="job_title"></textarea>
-            </div>
+                        {{-- For backend --}}
+                        <input type="hidden" name="mo_year" id="mo_selectedYear" value="">
+                    </div>
+                </div>
+                <div class="mt-1 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map-pinned">
+                        <path
+                            d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                        <circle cx="12" cy="8" r="2" />
+                        <path
+                            d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+                    </svg>
+                    <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="">ខេត្ត: *</label>
+                        <select name="mo_province" id="mo_province-select"  class="form-control">
+                            <option value="">--ជ្រើសរើស--</option>
+                            @foreach ($province as $pro)
+                            <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ស្រុក: *</label>
+                            <div>
+                                <div class="form-control" id="mo_dropdownDisplayDistrict"
+                                    onclick="toggleDropdown('mo_dropdownContentDistrict')">
+                                    --ជ្រើសរើសស្រុក--
+                                </div>
+                                <div class="dropdown-content p-2" id="mo_dropdownContentDistrict">
+                                    <input type="text" class="form-control" id="mo_searchInputDistrict"
+                                        placeholder="ស្វែងរកស្រុក">
+                                    <ul id="mo_dropdownListDistrict"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="mo_district" id="mo_selectedDistrict" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">ឃុំ/សង្កាត់: *</label>
+                            <div>
+                                <div class="form-control" id="mo_dropdownDisplayCommune"
+                                    onclick="toggleDropdown('mo_dropdownContentCommune')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="mo_dropdownContentCommune">
+                                    <input type="text" class="form-control" id="mo_searchInputCommune"
+                                        placeholder="ស្វែងរកឃុំ">
+                                    <ul id="mo_dropdownListCommune"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="mo_commune" id="mo_selectedCommune" value="">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                            <label for="">នៅភូមិ: *</label>
+                            <div>
+                                <div class="form-control" id="mo_dropdownDisplayVillage"
+                                    onclick="toggleDropdown('mo_dropdownContentVillage')">
+                                    --ជ្រើសរើស--
+                                </div>
+                                <div class="dropdown-content p-2" id="mo_dropdownContentVillage">
+                                    <input type="text" class="form-control" id="mo_searchInputVillage"
+                                        placeholder="ស្វែងរកភូមិ">
+                                    <ul id="mo_dropdownListVillage"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="mo_village" id="mo_selectedVillage" value="">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">ប្រទេស: *</label>
+                        <input type="text" class="form-control" placeholder="ប្រទេស" name="mo_country">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="">លម្អិត: *</label>
+                    </div>
+                </div>
+            </fieldset>
         </div>
 
-
-
-
+        <!-- current address -->
         <div class="mt-1 d-flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -291,77 +734,149 @@
                 <path
                     d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
             </svg>
-            <h5 class="ml-2">ទីកន្លែងកំណើត</h5>
+            <h5 class="ml-2">ទីកលំនៅបច្ចុប្បន្ន</h5>
         </div>
 
         <div class="row">
 
             <div class="col-md-3">
                 <label for="">ខេត្ត: *</label>
-                <select name="province" id="province-select" required class="form-control">
+                <select name="stay_province" id="stay_province-select"  class="form-control">
                     <option value="">--ជ្រើសរើស--</option>
                     @foreach ($province as $pro)
-                        <option value="{{ $pro->province_id }}">{{ $pro->province_kh_name }}</option>
+                    <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
                     @endforeach
                 </select>
             </div>
-
             <div class="col-md-3">
                 <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
                     <label for="">ស្រុក: *</label>
                     <div>
-                        <div class="form-control" id="dropdownDisplayDistrict"
-                            onclick="toggleDropdown('dropdownContentDistrict')">
+                        <div class="form-control" id="stay_dropdownDisplayDistrict"
+                            onclick="toggleDropdown('stay_dropdownContentDistrict')">
                             --ជ្រើសរើសស្រុក--
                         </div>
-                        <div class="dropdown-content p-2" id="dropdownContentDistrict">
-                            <input type="text" class="form-control" id="searchInputDistrict"
+                        <div class="dropdown-content p-2" id="stay_dropdownContentDistrict">
+                            <input type="text" class="form-control" id="stay_searchInputDistrict"
                                 placeholder="ស្វែងរកស្រុក">
-                            <ul id="dropdownListDistrict"></ul>
+                            <ul id="stay_dropdownListDistrict"></ul>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="selected_district" id="selectedDistrict" value="">
+                <input type="hidden" name="stay_district" id="stay_selectedDistrict" value="">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
                     <label for="">ឃុំ/សង្កាត់: *</label>
                     <div>
-                        <div class="form-control" id="dropdownDisplayCommune"
-                            onclick="toggleDropdown('dropdownContentCommune')">
+                        <div class="form-control" id="stay_dropdownDisplayCommune"
+                            onclick="toggleDropdown('stay_dropdownContentCommune')">
                             --ជ្រើសរើស--
                         </div>
-                        <div class="dropdown-content p-2" id="dropdownContentCommune">
-                            <input type="text" class="form-control" id="searchInputCommune"
+                        <div class="dropdown-content p-2" id="stay_dropdownContentCommune">
+                            <input type="text" class="form-control" id="stay_searchInputCommune"
                                 placeholder="ស្វែងរកឃុំ">
-                            <ul id="dropdownListCommune"></ul>
+                            <ul id="stay_dropdownListCommune"></ul>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="selected_commune" id="selectedCommune" value="">
+                <input type="hidden" name="stay_commune" id="stay_selectedCommune" value="">
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
                     <label for="">នៅភូមិ: *</label>
                     <div>
-                        <div class="form-control" id="dropdownDisplayVillage"
-                            onclick="toggleDropdown('dropdownContentVillage')">
+                        <div class="form-control" id="stay_dropdownDisplayVillage"
+                            onclick="toggleDropdown('stay_dropdownContentVillage')">
                             --ជ្រើសរើស--
                         </div>
-                        <div class="dropdown-content p-2" id="dropdownContentVillage">
-                            <input type="text" class="form-control" id="searchInputVillage"
+                        <div class="dropdown-content p-2" id="stay_dropdownContentVillage">
+                            <input type="text" class="form-control" id="stay_searchInputVillage"
                                 placeholder="ស្វែងរកភូមិ">
-                            <ul id="dropdownListVillage"></ul>
+                            <ul id="stay_dropdownListVillage"></ul>
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="selected_village" id="selectedVillage" value="">
+                <input type="hidden" name="stay_village" id="stay_selectedVillage" value="">
+            </div>
+            <div class="col-md-2">
+                <label for="">ប្រទេស: *</label>
+                <input type="text" class="form-control" placeholder="ប្រទេស" name="stay_country">
+            </div>
+            <div class="col-md-2">
+                <label for="">លម្អិត: *</label>
             </div>
 
+        </div>
+        <!-- current address -->
+        <div class="mt-1 d-flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-map-pinned">
+                <path
+                    d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0" />
+                <circle cx="12" cy="8" r="2" />
+                <path
+                    d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712" />
+            </svg>
+            <h5 class="ml-2">ធ្វើនៅ</h5>
+        </div>
 
+        <div class="row">
 
+            <div class="col-md-3">
+                <label for="">ធ្វើនៅ: *</label>
+                <input type="text" class="form-control" placeholder="ធ្វើនៅ" name="place_start">
+
+            </div>
+            <div class="col-md-3">
+                <label for="">ថ្ងៃទី: *</label>
+                <select name="sta_day"  id="sta_day" class="form-control">
+                    <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="search-dropdown" style="margin-top: 0px; margin-left:0px;">
+                    <label for="">ខែ: *</label>
+                    <div>
+                        <div class="form-control" id="sta_dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
+                        <div class="dropdown-content p-2" id="sta_dropdownContentMonth">
+                            <input type="text" class="form-control" id="sta_searchInputMonth"
+                                placeholder="ស្វែងរកខែ">
+                            <ul id="sta_dropdownListMonth"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- for display name to backend --}}
+                <input type="hidden"  name="sta_month" id="sta_selectedMonth" value="">
+            </div>
+            <div class="col-md-3">
+                <div class="search-dropdown" style="margin-top: 0px; margin-left: 0px;">
+                    <label for="">ឆ្នាំ: *</label>
+                    <div>
+                        <div class="form-control" id="sta_dropdownDisplayYear">--ជ្រើសរើសឆ្នាំ--</div>
+                        <div class="dropdown-content p-2" id="sta_dropdownContentYear" style="display: none;">
+                            <input type="text" class="form-control" id="sta_searchInputYear"
+                                placeholder="ស្វែងរកឆ្នាំ">
+                            <ul id="sta_dropdownListYear"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- For backend --}}
+                <input type="hidden" name="sta_year" id="sta_selectedYear" value="">
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="">រូបថត(4x6)</label>
+                <input type="file" name="photo" id="imageValide" class="form-control">
+                <div id="image-holder_one" class=""></div>
+            </div>
         </div>
 
 
@@ -461,6 +976,7 @@
         return num.toString().split('').map(digit => khmerNumbers[digit]).join('');
     }
 
+    //note date 
     // Generate days in Khmer numerals
     const daySelect = document.getElementById('day');
     for (let day = 1; day <= 31; day++) {
@@ -470,8 +986,6 @@
         option.textContent = khmerDay; // Display text in Khmer numerals
         daySelect.appendChild(option);
     }
-
-
 
     $(document).ready(function() {
         // Array of Khmer month names
@@ -512,104 +1026,6 @@
         $('#dropdownDisplayMonth').on('click', function() {
             $('#dropdownContentMonth').toggle();
         });
-
-
-
-
-        //end endfather
-
-
-        //district dropdown
-        $('#dropdownDisplayDistrict').on('click', function() {
-            $('#dropdownContentDistrict').toggle();
-        });
-
-        $('#searchInputDisctrict').on('input', function() {
-            let value = $(this).val().toLowerCase();
-            $('#dropdownListDiscrict li').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-
-        $('#dropdownDisplayDistrict').on('click', 'li', function() {
-            $('#dropdownDisplayMonth').text($(this).text());
-            $('#selectedDiscrict').val($(this).text());
-            $('#dropdownContentDistrict').hide();
-        });
-
-
-        $('#dropdownDisplayDistrict').on('click', function() {
-            $('#dropdownContentDistrict').toggle();
-        });
-
-
-        $('#dropdownDisplayDistrict').on('click', function() {
-            $('#dropdownContentDistrict').toggle();
-        });
-
-        //end destrict
-
-        //commune dropdown
-        $('#dropdownDisplayCommune').on('click', function() {
-            $('#dropdownContentCommune').toggle();
-        });
-
-        $('#searchInputCommune').on('input', function() {
-            let value = $(this).val().toLowerCase();
-            $('#dropdownListDiscrict li').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-
-        $('#dropdownListCommune').on('click', 'li', function() {
-            $('#dropdownDisplayCommune').text($(this).text());
-            $('#selectedCommune').val($(this).text());
-            $('#dropdownContentCommune').hide();
-        });
-
-
-        $('#dropdownDisplayCommune').on('click', function() {
-            $('#dropdownContentCommune').toggle();
-        });
-
-
-        $('#dropdownDisplayCommune').on('click', function() {
-            $('#dropdownContentCommune').toggle();
-        });
-
-        //end commune dropdown
-
-        //village
-
-        $('#dropdownDisplayVillage').on('click', function() {
-            $('#dropdownContentVillage').toggle();
-        });
-
-        $('#searchInputVillage').on('input', function() {
-            let value = $(this).val().toLowerCase();
-            $('#dropdownListVillage li').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-
-        $('#dropdownListVillage').on('click', 'li', function() {
-            $('#dropdownDisplayVillage').text($(this).text());
-            $('#selectedVillage').val($(this).text());
-            $('#dropdownContentVillage').hide();
-        });
-
-
-        $('#dropdownDisplayVillage').on('click', function() {
-            $('#dropdownContentVillage').toggle();
-        });
-
-
-        $('#dropdownDisplayVillage').on('click', function() {
-            $('#dropdownContentVillage').toggle();
-        });
-        //end village
-
-
 
         // Generate years from 2050 to 1900
         const startYear = 2050;
@@ -653,16 +1069,379 @@
             }
         });
 
+        
+        //start baby dropdown
+        //district dropdown
+        $('#ba_dropdownDisplayDistrict').on('click', function() {
+            $('#ba_dropdownContentDistrict').toggle();
+        });
 
+        $('#ba_searchInputDisctrict').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#ba_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#ba_dropdownDisplayDistrict').on('click', 'li', function() {
+            $('#ba_dropdownDisplayMonth').text($(this).text());
+            $('#ba_selectedDistrict').val($(this).text());
+            $('#ba_dropdownContentDistrict').hide();
+        });
+
+
+        $('#ba_dropdownDisplayDistrict').on('click', function() {
+            $('#ba_dropdownContentDistrict').toggle();
+        });
+
+
+        $('#ba_dropdownDisplayDistrict').on('click', function() {
+            $('#ba_dropdownContentDistrict').toggle();
+        });
+        //end destrict
+
+        //commune dropdown
+        $('#ba_dropdownDisplayCommune').on('click', function() {
+            $('#ba_dropdownContentCommune').toggle();
+        });
+
+        $('#ba_searchInputCommune').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#ba_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#ba_dropdownListCommune').on('click', 'li', function() {
+            $('#ba_dropdownDisplayCommune').text($(this).text());
+            $('#ba_selectedCommune').val($(this).text());
+            $('#ba_dropdownContentCommune').hide();
+        });
+
+
+        $('#ba_dropdownDisplayCommune').on('click', function() {
+            $('#ba_dropdownContentCommune').toggle();
+        });
+
+
+        $('#ba_dropdownDisplayCommune').on('click', function() {
+            $('#ba_dropdownContentCommune').toggle();
+        });
+
+        //end commune dropdown
+
+        //village
+
+        $('#ba_dropdownDisplayVillage').on('click', function() {
+            $('#ba_dropdownContentVillage').toggle();
+        });
+
+        $('#ba_searchInputVillage').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#ba_dropdownListVillage li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#ba_dropdownListVillage').on('click', 'li', function() {
+            $('#ba_dropdownDisplayVillage').text($(this).text());
+            $('#ba_selectedVillage').val($(this).text());
+            $('#ba_dropdownContentVillage').hide();
+        });
+
+
+        $('#ba_dropdownDisplayVillage').on('click', function() {
+            $('#ba_dropdownContentVillage').toggle();
+        });
+
+
+        $('#ba_dropdownDisplayVillage').on('click', function() {
+            $('#ba_dropdownContentVillage').toggle();
+        });
+        //end villagedropdown
+        //end baby dropdown 
+
+        //start Father  dropdown
+        //district dropdown
+        $('#fa_dropdownDisplayDistrict').on('click', function() {
+            $('#fa_dropdownContentDistrict').toggle();
+        });
+
+        $('#fa_searchInputDisctrict').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#fa_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#fa_dropdownDisplayDistrict').on('click', 'li', function() {
+            $('#fa_dropdownDisplayMonth').text($(this).text());
+            $('#fa_selectedDistrict').val($(this).text());
+            $('#fa_dropdownContentDistrict').hide();
+        });
+
+
+        $('#fa_dropdownDisplayDistrict').on('click', function() {
+            $('#fa_dropdownContentDistrict').toggle();
+        });
+
+
+        $('#fa_dropdownDisplayDistrict').on('click', function() {
+            $('#fa_dropdownContentDistrict').toggle();
+        });
+        //end destrict
+
+        //commune dropdown
+        $('#fa_dropdownDisplayCommune').on('click', function() {
+            $('#fa_dropdownContentCommune').toggle();
+        });
+
+        $('#fa_searchInputCommune').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#fa_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#fa_dropdownListCommune').on('click', 'li', function() {
+            $('#fa_dropdownDisplayCommune').text($(this).text());
+            $('#fa_selectedCommune').val($(this).text());
+            $('#fa_dropdownContentCommune').hide();
+        });
+
+
+        $('#fa_dropdownDisplayCommune').on('click', function() {
+            $('#fa_dropdownContentCommune').toggle();
+        });
+
+
+        $('#fa_dropdownDisplayCommune').on('click', function() {
+            $('#fa_dropdownContentCommune').toggle();
+        });
+
+        //end commune dropdown
+
+        //village
+
+        $('#fa_dropdownDisplayVillage').on('click', function() {
+            $('#fa_dropdownContentVillage').toggle();
+        });
+
+        $('#fa_searchInputVillage').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#fa_dropdownListVillage li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#fa_dropdownListVillage').on('click', 'li', function() {
+            $('#fa_dropdownDisplayVillage').text($(this).text());
+            $('#fa_selectedVillage').val($(this).text());
+            $('#fa_dropdownContentVillage').hide();
+        });
+
+
+        $('#fa_dropdownDisplayVillage').on('click', function() {
+            $('#fa_dropdownContentVillage').toggle();
+        });
+
+
+        $('#fa_dropdownDisplayVillage').on('click', function() {
+            $('#fa_dropdownContentVillage').toggle();
+        });
+        //end village 
+        //end father 
+
+        //start mother  dropdown
+        //district dropdown
+        $('#mo_dropdownDisplayDistrict').on('click', function() {
+            $('#mo_dropdownContentDistrict').toggle();
+        });
+
+        $('#mo_searchInputDisctrict').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#mo_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#mo_dropdownDisplayDistrict').on('click', 'li', function() {
+            $('#mo_dropdownDisplayMonth').text($(this).text());
+            $('#mo_selectedDistrict').val($(this).text());
+            $('#mo_dropdownContentDistrict').hide();
+        });
+
+
+        $('#mo_dropdownDisplayDistrict').on('click', function() {
+            $('#mo_dropdownContentDistrict').toggle();
+        });
+
+
+        $('#mo_dropdownDisplayDistrict').on('click', function() {
+            $('#mo_dropdownContentDistrict').toggle();
+        });
+        //end destrict
+
+        //commune dropdown
+        $('#mo_dropdownDisplayCommune').on('click', function() {
+            $('#mo_dropdownContentCommune').toggle();
+        });
+
+        $('#mo_searchInputCommune').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#mo_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#mo_dropdownListCommune').on('click', 'li', function() {
+            $('#mo_dropdownDisplayCommune').text($(this).text());
+            $('#mo_selectedCommune').val($(this).text());
+            $('#mo_dropdownContentCommune').hide();
+        });
+
+
+        $('#mo_dropdownDisplayCommune').on('click', function() {
+            $('#mo_dropdownContentCommune').toggle();
+        });
+
+
+        $('#mo_dropdownDisplayCommune').on('click', function() {
+            $('#mo_dropdownContentCommune').toggle();
+        });
+
+        //end commune dropdown
+
+        //village
+
+        $('#mo_dropdownDisplayVillage').on('click', function() {
+            $('#mo_dropdownContentVillage').toggle();
+        });
+
+        $('#mo_searchInputVillage').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#mo_dropdownListVillage li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#mo_dropdownListVillage').on('click', 'li', function() {
+            $('#mo_dropdownDisplayVillage').text($(this).text());
+            $('#mo_selectedVillage').val($(this).text());
+            $('#mo_dropdownContentVillage').hide();
+        });
+
+
+        $('#mo_dropdownDisplayVillage').on('click', function() {
+            $('#mo_dropdownContentVillage').toggle();
+        });
+
+
+        $('#mo_dropdownDisplayVillage').on('click', function() {
+            $('#mo_dropdownContentVillage').toggle();
+        });
+        //end village 
+        //end mother
+
+        //start current address  dropdown
+        //district dropdown
+        $('#stay_dropdownDisplayDistrict').on('click', function() {
+            $('#stay_dropdownContentDistrict').toggle();
+        });
+
+        $('#stay_searchInputDisctrict').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#stay_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#stay_dropdownDisplayDistrict').on('click', 'li', function() {
+            $('#stay_dropdownDisplayMonth').text($(this).text());
+            $('#stay_selectedDistrict').val($(this).text());
+            $('#stay_dropdownContentDistrict').hide();
+        });
+
+
+        $('#stay_dropdownDisplayDistrict').on('click', function() {
+            $('#stay_dropdownContentDistrict').toggle();
+        });
+
+
+        $('#stay_dropdownDisplayDistrict').on('click', function() {
+            $('#stay_dropdownContentDistrict').toggle();
+        });
+        //end destrict
+
+        //commune dropdown
+        $('#stay_dropdownDisplayCommune').on('click', function() {
+            $('#stay_dropdownContentCommune').toggle();
+        });
+
+        $('#stay_searchInputCommune').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#stay_dropdownListDiscrict li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#stay_dropdownListCommune').on('click', 'li', function() {
+            $('#stay_dropdownDisplayCommune').text($(this).text());
+            $('#stay_selectedCommune').val($(this).text());
+            $('#stay_dropdownContentCommune').hide();
+        });
+
+
+        $('#stay_dropdownDisplayCommune').on('click', function() {
+            $('#stay_dropdownContentCommune').toggle();
+        });
+
+
+        $('#stay_dropdownDisplayCommune').on('click', function() {
+            $('#stay_dropdownContentCommune').toggle();
+        });
+
+        //end commune dropdown
+
+        //village
+
+        $('#stay_dropdownDisplayVillage').on('click', function() {
+            $('#stay_dropdownContentVillage').toggle();
+        });
+
+        $('#stay_searchInputVillage').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#stay_dropdownListVillage li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        $('#stay_dropdownListVillage').on('click', 'li', function() {
+            $('#stay_dropdownDisplayVillage').text($(this).text());
+            $('#stay_selectedVillage').val($(this).text());
+            $('#stay_dropdownContentVillage').hide();
+        });
+
+
+        $('#stay_dropdownDisplayVillage').on('click', function() {
+            $('#stay_dropdownContentVillage').toggle();
+        });
+
+
+        $('#stay_dropdownDisplayVillage').on('click', function() {
+            $('#stay_dropdownContentVillage').toggle();
+        });
+        //end village 
+        //end current address 
     });
 
-
+    //start baby infor 
     //discrict dropdown search
     $(document).ready(function() {
         $('#province-select').change(function() {
             let provinceId = $(this).val();
-            $('#dropdownListDistrict').empty();
-            $('#dropdownDisplayDistrict').text('--ជ្រើសរើសស្រុក--');
+            $('#ba_dropdownListDistrict').empty();
+            $('#ba_dropdownDisplayDistrict').text('--ជ្រើសរើសស្រុក--');
 
             if (provinceId) {
                 $.ajax({
@@ -673,10 +1452,10 @@
                         let districtList = '';
                         $.each(data, function(key, district) {
                             districtList += '<li class="district-item" data-id="' +
-                                district.dis_id + '">' + district.district_kh_name +
+                                district.district_kh_name + '">' + district.district_kh_name +
                                 '</li>';
                         });
-                        $('#dropdownListDistrict').html(
+                        $('#ba_dropdownListDistrict').html(
                             districtList); // Populate district list
                     },
                     error: function() {
@@ -695,16 +1474,16 @@
         $(document).on('click', '.district-item', function() {
             const districtName = $(this).text();
             const districtId = $(this).data('id');
-            $('#dropdownDisplayDistrict').text(districtName); // Update display text
-            var item = $('#selectedDistrict').val(districtId);
+            $('#ba_dropdownDisplayDistrict').text(districtName); // Update display text
+            var item = $('#ba_selectedDistrict').val(districtId);
             console.log(item)
-            $('#dropdownContentDistrict').hide(); // Hide dropdown after selection
+            $('#ba_dropdownContentDistrict').hide(); // Hide dropdown after selection
         });
 
         // Implement search functionality
-        $('#searchInputDistrict').on('input', function() {
+        $('#ba_searchInputDistrict').on('input', function() {
             const searchTerm = $(this).val().toLowerCase();
-            $('#dropdownListDistrict .district-item').filter(function() {
+            $('#ba_dropdownListDistrict .district-item').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
                     1); // Filter district items
             });
@@ -713,15 +1492,12 @@
         // Close dropdown if clicked outside
         $(document).click(function(event) {
             if (!$(event.target).closest('.search-dropdown').length) {
-                $('#dropdownContentDistrict').hide(); // Hide dropdown on outside click
+                $('#ba_dropdownContentDistrict').hide(); // Hide dropdown on outside click
             }
         });
     });
 
-
-
     //commune dropdown search
-
     $(document).ready(function() {
         // Handle district selection
         $(document).on('click', '.district-item', function() {
@@ -735,9 +1511,9 @@
         });
 
         function fetchCommunes(districtId) {
-            $('#dropdownListCommune').empty(); // Clear previous communes
-            $('#dropdownDisplayCommune').text('--ជ្រើសរើស--'); // Reset commune display
-            $('#selectedCommune').val(''); // Reset selected commune ID
+            $('#ba_dropdownListCommune').empty(); // Clear previous communes
+            $('#ba_dropdownDisplayCommune').text('--ជ្រើសរើស--'); // Reset commune display
+            $('#ba_selectedCommune').val(''); // Reset selected commune ID
 
             if (districtId) {
                 $.ajax({
@@ -747,11 +1523,10 @@
                     success: function(data) {
                         let communeList = '';
                         $.each(data, function(key, commune) {
-                            communeList += '<li class="commune-item" data-id="' + commune
-                                .commune_id + '">' +
-                                commune.commune_kh_name + '</li>';
+                            communeList += '<li class="commune-item" data-id="' +
+                                commune.commune_kh_name + '">' + commune.commune_kh_name + '</li>';
                         });
-                        $('#dropdownListCommune').html(communeList); // Populate commune list
+                        $('#ba_dropdownListCommune').html(communeList); // Populate commune list
                     },
                     error: function() {
                         alert('Error retrieving communes.');
@@ -764,15 +1539,15 @@
         $(document).on('click', '.commune-item', function() {
             const communeName = $(this).text();
             const communeId = $(this).data('id');
-            $('#dropdownDisplayCommune').text(communeName); // Update display text
-            $('#selectedCommune').val(communeId); // Set hidden input value for commune
-            $('#dropdownContentCommune').hide(); // Hide dropdown after selection
+            $('#ba_dropdownDisplayCommune').text(communeName); // Update display text
+            $('#ba_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#ba_dropdownContentCommune').hide(); // Hide dropdown after selection
         });
 
         // Implement search functionality for communes
-        $('#searchInputCommune').on('input', function() {
+        $('#ba_searchInputCommune').on('input', function() {
             const searchTerm = $(this).val().toLowerCase();
-            $('#dropdownListCommune .commune-item').filter(function() {
+            $('#ba_dropdownListCommune .commune-item').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
                     1); // Filter commune items
             });
@@ -786,23 +1561,20 @@
         // Close dropdown if clicked outside
         $(document).click(function(event) {
             if (!$(event.target).closest('.search-dropdown').length) {
-                $('#dropdownContentDistrict').hide(); // Hide district dropdown on outside click
-                $('#dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+                $('#ba_dropdownContentDistrict').hide(); // Hide district dropdown on outside click
+                $('#ba_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
             }
         });
     });
 
-
-
     //village dropdown search
-
     $(document).ready(function() {
         // Handle commune selection
         $(document).on('click', '.commune-item', function() {
             const communeId = $(this).data('id');
-            $('#selectedCommune').val(communeId); // Set hidden input value for commune
-            $('#dropdownDisplayCommune').text($(this).text()); // Update display text
-            $('#dropdownContentCommune').hide(); // Hide dropdown after selection
+            $('#ba_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#ba_dropdownDisplayCommune').text($(this).text()); // Update display text
+            $('#ba_dropdownContentCommune').hide(); // Hide dropdown after selection
 
             // Fetch villages based on selected commune
             fetchVillages(communeId);
@@ -810,9 +1582,9 @@
 
         // Function to fetch villages based on selected commune
         function fetchVillages(communeId) {
-            $('#dropdownListVillage').empty(); // Clear previous villages
-            $('#dropdownDisplayVillage').text('--ជ្រើសរើស--'); // Reset village display
-            $('#selectedVillage').val(''); // Reset selected village ID
+            $('#ba_dropdownListVillage').empty(); // Clear previous villages
+            $('#ba_dropdownDisplayVillage').text('--ជ្រើសរើស--'); // Reset village display
+            $('#ba_selectedVillage').val(''); // Reset selected village ID
 
             if (communeId) {
                 $.ajax({
@@ -823,10 +1595,10 @@
                         let villageList = '';
                         $.each(data, function(key, village) {
                             villageList += '<li class="village-item" data-id="' + village
-                                .id + '">' +
+                                .village_kh_name + '">' +
                                 village.village_kh_name + '</li>';
                         });
-                        $('#dropdownListVillage').html(villageList); // Populate village list
+                        $('#ba_dropdownListVillage').html(villageList); // Populate village list
                     },
                     error: function() {
                         alert('Error retrieving villages.');
@@ -839,15 +1611,15 @@
         $(document).on('click', '.village-item', function() {
             const villageName = $(this).text();
             const villageId = $(this).data('id');
-            $('#dropdownDisplayVillage').text(villageName); // Update display text
-            $('#selectedVillage').val(villageId); // Set hidden input value for village
-            $('#dropdownContentVillage').hide(); // Hide dropdown after selection
+            $('#ba_dropdownDisplayVillage').text(villageName); // Update display text
+            $('#ba_selectedVillage').val(villageId); // Set hidden input value for village
+            $('#ba_dropdownContentVillage').hide(); // Hide dropdown after selection
         });
 
         // Implement search functionality for villages
-        $('#searchInputVillage').on('input', function() {
+        $('#ba_searchInputVillage').on('input', function() {
             const searchTerm = $(this).val().toLowerCase();
-            $('#dropdownListVillage .village-item').filter(function() {
+            $('#ba_dropdownListVillage .village-item').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
                     1); // Filter village items
             });
@@ -861,169 +1633,630 @@
         // Close dropdown if clicked outside
         $(document).click(function(event) {
             if (!$(event.target).closest('.search-dropdown').length) {
-                $('#dropdownContentCommune').hide(); // Hide commune dropdown on outside click
-                $('#dropdownContentVillage').hide(); // Hide village dropdown on outside click
+                $('#ba_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+                $('#ba_dropdownContentVillage').hide(); // Hide village dropdown on outside click
             }
         });
     });
 
+    //end baby infor 
 
-    //fetch father dropdown and display details
+    //start father infor 
+    //discrict dropdown search
     $(document).ready(function() {
-        // Toggle dropdown display on click
-        $('#dropdownDisplayFather').on('click', function(e) {
-            e.stopPropagation();
-            $('#dropdownContentFather').toggle();
+        $('#fa_province-select').change(function() {
+            let provinceId = $(this).val();
+            $('#fa_dropdownListDistrict').empty();
+            $('#fa_dropdownDisplayDistrict').text('--ជ្រើសរើសស្រុក--');
 
-            // Fetch father list only once if empty
-            if ($('#dropdownListFather').is(':empty')) {
+            if (provinceId) {
                 $.ajax({
-                    url: '/get-fathers',
+                    url: '/provinces/' + provinceId + '/districts',
                     type: 'GET',
-                    success: function(fathers) {
-                        fathers.forEach(function(father) {
-                            $('#dropdownListFather').append(
-                                `<li data-id="${father.father_id}" class="dropdown-item">${father.fname_kh} ${father.lname_kh} || ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${father.village_kh_name}</b>  ឃុំ <b>${father.commune_kh_name}</b> ស្រុក <b>${father.district_kh_name}</b> ខេត្ត <b>${father.province_kh_name}</b></li>`
-                            );
+                    dataType: 'json',
+                    success: function(data) {
+                        let districtList = '';
+                        $.each(data, function(key, district) {
+                            districtList += '<li class="district-item" data-id="' +
+                                district.district_kh_name + '">' + district.district_kh_name +
+                                '</li>';
                         });
+                        $('#fa_dropdownListDistrict').html(
+                            districtList); // Populate district list
                     },
                     error: function() {
-                        alert("Could not load father names.");
+                        alert('Error retrieving districts.');
                     }
                 });
             }
         });
 
-        // Hide dropdown if clicking outside of it
-        $(document).on('click', function(e) {
-            if (!$(e.target).closest('.search-dropdown').length) {
-                $('#dropdownContentFather').hide();
+        // Toggle dropdown display
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtName = $(this).text();
+            const districtId = $(this).data('id');
+            $('#fa_dropdownDisplayDistrict').text(districtName); // Update display text
+            var item = $('#fa_selectedDistrict').val(districtId);
+            console.log(item)
+            $('#fa_dropdownContentDistrict').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality
+        $('#fa_searchInputDistrict').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#fa_dropdownListDistrict .district-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter district items
+            });
+        });
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#fa_dropdownContentDistrict').hide(); // Hide dropdown on outside click
             }
-        });
-
-        // Filter dropdown list based on search input
-        $('#searchInputFather').on('input', function() {
-            let value = $(this).val().toLowerCase();
-            $('#dropdownListFather li').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-            });
-        });
-
-        // Handle selecting a father and fetching details
-        $('#dropdownListFather').on('click', 'li', function() {
-            const selectedName = $(this).text();
-            const selectedId = $(this).data('id');
-
-            let fatherPhotoPath = "{{ asset('upload') }}";
-            let defaultImage =
-                "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
-
-            $('#dropdownDisplayFather').text(selectedName);
-            $('#selectedFatherID').val(selectedId); // Set selected father ID for backend
-
-            // Fetch father details by ID
-            $.ajax({
-                url: `/get-father-details/${selectedId}`,
-                type: 'GET',
-                success: function(father) {
-                    $('#fatherDetails').html(`
-                
-                     <img src="${father.photo ? fatherPhotoPath + '/' + father.photo : defaultImage}" width="150px" alt="មិនមានរូបភាព"/>
-                    <hr/>
-                    <p>ឈ្មោះ៖ <b>${father.fname_kh} ${father.lname_kh}</b></p>
-                    <p>ថ្ងៃខែឆ្នាំកំណើត៖ <b>${father.day}-${father.month}-${father.year}</b></p>
-                    <p>ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${father.village_kh_name}</b>  ឃុំ <b>${father.commune_kh_name}</b> ស្រុក <b>${father.district_kh_name}</b> ខេត្ត <b>${father.province_kh_name}</b></p>
-                    <p>មុខរបរបច្ចុប្បន្ន៖ <b>${father.job_title}</b></p>
-                    
-                `);
-                },
-                error: function() {
-                    alert("Could not load father details.");
-                }
-            });
-
-            $('#dropdownContentFather').hide(); // Hide dropdown after selection
         });
     });
 
-
-
-
-    //get mother dropdown and display mother info
-
+    //commune dropdown search
     $(document).ready(function() {
-        // Toggle dropdown display for mother
-        $('#dropdownDisplayMother').on('click', function(e) {
-            e.stopPropagation();
-            $('#dropdownContentMother').toggle();
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtId = $(this).data('id');
+            $('#selectedDistrict').val(districtId); // Set hidden input value for district
+            $('#dropdownDisplayDistrict').text($(this).text()); // Update display text
+            $('#dropdownContentDistrict').hide(); // Hide dropdown after selection
 
-            // Fetch mother list only once if empty
-            if ($('#dropdownListMother').is(':empty')) {
+            // Fetch communes based on selected district
+            fetchCommunes(districtId);
+        });
+
+        function fetchCommunes(districtId) {
+            $('#fa_dropdownListCommune').empty(); // Clear previous communes
+            $('#fa_dropdownDisplayCommune').text('--ជ្រើសរើស--'); // Reset commune display
+            $('#fa_selectedCommune').val(''); // Reset selected commune ID
+
+            if (districtId) {
                 $.ajax({
-                    url: '/get-mothers',
+                    url: '/districts/' + districtId + '/communes',
                     type: 'GET',
-                    success: function(mothers) {
-                        mothers.forEach(function(mother) {
-                            $('#dropdownListMother').append(
-                                `<li data-id="${mother.mother_id}" class="dropdown-item">${mother.fname_kh} ${mother.lname_kh} || ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${mother.village_kh_name}</b>  ឃុំ <b>${mother.commune_kh_name}</b> ស្រុក <b>${mother.district_kh_name}</b> ខេត្ត <b>${mother.province_kh_name}</b> </li>`
-                            );
+                    dataType: 'json',
+                    success: function(data) {
+                        let communeList = '';
+                        $.each(data, function(key, commune) {
+                            communeList += '<li class="commune-item" data-id="' +
+                                commune.commune_kh_name + '">' + commune.commune_kh_name + '</li>';
                         });
+                        $('#fa_dropdownListCommune').html(communeList); // Populate commune list
                     },
                     error: function() {
-                        alert("Could not load mother names.");
+                        alert('Error retrieving communes.');
+                    }
+                });
+            }
+        }
+
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeName = $(this).text();
+            const communeId = $(this).data('id');
+            $('#fa_dropdownDisplayCommune').text(communeName); // Update display text
+            $('#fa_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#fa_dropdownContentCommune').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for communes
+        $('#fa_searchInputCommune').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#fa_dropdownListCommune .commune-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter commune items
+            });
+        });
+
+        // Toggle dropdown display for communes
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#fa_dropdownContentDistrict').hide(); // Hide district dropdown on outside click
+                $('#fa_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+            }
+        });
+    });
+
+    //village dropdown search
+    $(document).ready(function() {
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeId = $(this).data('id');
+            $('#fa_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#fa_dropdownDisplayCommune').text($(this).text()); // Update display text
+            $('#fa_dropdownContentCommune').hide(); // Hide dropdown after selection
+
+            // Fetch villages based on selected commune
+            fetchVillages(communeId);
+        });
+
+        // Function to fetch villages based on selected commune
+        function fetchVillages(communeId) {
+            $('#fa_dropdownListVillage').empty(); // Clear previous villages
+            $('#fa_dropdownDisplayVillage').text('--ជ្រើសរើស--'); // Reset village display
+            $('#fa_selectedVillage').val(''); // Reset selected village ID
+
+            if (communeId) {
+                $.ajax({
+                    url: '/communes/' + communeId + '/villages',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let villageList = '';
+                        $.each(data, function(key, village) {
+                            villageList += '<li class="village-item" data-id="' + village
+                                .village_kh_name + '">' +
+                                village.village_kh_name + '</li>';
+                        });
+                        $('#fa_dropdownListVillage').html(villageList); // Populate village list
+                    },
+                    error: function() {
+                        alert('Error retrieving villages.');
+                    }
+                });
+            }
+        }
+
+        // Handle village selection
+        $(document).on('click', '.village-item', function() {
+            const villageName = $(this).text();
+            const villageId = $(this).data('id');
+            $('#fa_dropdownDisplayVillage').text(villageName); // Update display text
+            $('#fa_selectedVillage').val(villageId); // Set hidden input value for village
+            $('#fa_dropdownContentVillage').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for villages
+        $('#fa_searchInputVillage').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#fa_dropdownListVillage .village-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter village items
+            });
+        });
+
+        // Toggle dropdown display for villages
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#fa_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+                $('#fa_dropdownContentVillage').hide(); // Hide village dropdown on outside click
+            }
+        });
+    });
+
+    //end father infor 
+
+    //start mother infor 
+    //discrict dropdown search
+    $(document).ready(function() {
+        $('#mo_province-select').change(function() {
+            let provinceId = $(this).val();
+            $('#mo_dropdownListDistrict').empty();
+            $('#mo_dropdownDisplayDistrict').text('--ជ្រើសរើសស្រុក--');
+
+            if (provinceId) {
+                $.ajax({
+                    url: '/provinces/' + provinceId + '/districts',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let districtList = '';
+                        $.each(data, function(key, district) {
+                            districtList += '<li class="district-item" data-id="' +
+                                district.district_kh_name + '">' + district.district_kh_name +
+                                '</li>';
+                        });
+                        $('#mo_dropdownListDistrict').html(
+                            districtList); // Populate district list
+                    },
+                    error: function() {
+                        alert('Error retrieving districts.');
                     }
                 });
             }
         });
 
-        // Hide dropdown if clicking outside of it
-        $(document).on('click', function(e) {
-            if (!$(e.target).closest('.search-dropdown').length) {
-                $('#dropdownContentMother').hide();
+        // Toggle dropdown display
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtName = $(this).text();
+            const districtId = $(this).data('id');
+            $('#mo_dropdownDisplayDistrict').text(districtName); // Update display text
+            var item = $('#mo_selectedDistrict').val(districtId);
+            console.log(item)
+            $('#mo_dropdownContentDistrict').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality
+        $('#mo_searchInputDistrict').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#mo_dropdownListDistrict .district-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter district items
+            });
+        });
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#mo_dropdownContentDistrict').hide(); // Hide dropdown on outside click
+            }
+        });
+    });
+
+    //commune dropdown search
+    $(document).ready(function() {
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtId = $(this).data('id');
+            $('#selectedDistrict').val(districtId); // Set hidden input value for district
+            $('#dropdownDisplayDistrict').text($(this).text()); // Update display text
+            $('#dropdownContentDistrict').hide(); // Hide dropdown after selection
+
+            // Fetch communes based on selected district
+            fetchCommunes(districtId);
+        });
+
+        function fetchCommunes(districtId) {
+            $('#mo_dropdownListCommune').empty(); // Clear previous communes
+            $('#mo_dropdownDisplayCommune').text('--ជ្រើសរើស--'); // Reset commune display
+            $('#mo_selectedCommune').val(''); // Reset selected commune ID
+
+            if (districtId) {
+                $.ajax({
+                    url: '/districts/' + districtId + '/communes',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let communeList = '';
+                        $.each(data, function(key, commune) {
+                            communeList += '<li class="commune-item" data-id="' +
+                                commune.commune_kh_name + '">' + commune.commune_kh_name + '</li>';
+                        });
+                        $('#mo_dropdownListCommune').html(communeList); // Populate commune list
+                    },
+                    error: function() {
+                        alert('Error retrieving communes.');
+                    }
+                });
+            }
+        }
+
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeName = $(this).text();
+            const communeId = $(this).data('id');
+            $('#mo_dropdownDisplayCommune').text(communeName); // Update display text
+            $('#mo_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#mo_dropdownContentCommune').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for communes
+        $('#mo_searchInputCommune').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#mo_dropdownListCommune .commune-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter commune items
+            });
+        });
+
+        // Toggle dropdown display for communes
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#mo_dropdownContentDistrict').hide(); // Hide district dropdown on outside click
+                $('#mo_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+            }
+        });
+    });
+
+    //village dropdown search
+    $(document).ready(function() {
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeId = $(this).data('id');
+            $('#mo_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#mo_dropdownDisplayCommune').text($(this).text()); // Update display text
+            $('#mo_dropdownContentCommune').hide(); // Hide dropdown after selection
+
+            // Fetch villages based on selected commune
+            fetchVillages(communeId);
+        });
+
+        // Function to fetch villages based on selected commune
+        function fetchVillages(communeId) {
+            $('#mo_dropdownListVillage').empty(); // Clear previous villages
+            $('#mo_dropdownDisplayVillage').text('--ជ្រើសរើស--'); // Reset village display
+            $('#mo_selectedVillage').val(''); // Reset selected village ID
+
+            if (communeId) {
+                $.ajax({
+                    url: '/communes/' + communeId + '/villages',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let villageList = '';
+                        $.each(data, function(key, village) {
+                            villageList += '<li class="village-item" data-id="' + village
+                                .village_kh_name + '">' +
+                                village.village_kh_name + '</li>';
+                        });
+                        $('#mo_dropdownListVillage').html(villageList); // Populate village list
+                    },
+                    error: function() {
+                        alert('Error retrieving villages.');
+                    }
+                });
+            }
+        }
+
+        // Handle village selection
+        $(document).on('click', '.village-item', function() {
+            const villageName = $(this).text();
+            const villageId = $(this).data('id');
+            $('#mo_dropdownDisplayVillage').text(villageName); // Update display text
+            $('#mo_selectedVillage').val(villageId); // Set hidden input value for village
+            $('#mo_dropdownContentVillage').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for villages
+        $('#mo_searchInputVillage').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#mo_dropdownListVillage .village-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter village items
+            });
+        });
+
+        // Toggle dropdown display for villages
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#mo_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+                $('#mo_dropdownContentVillage').hide(); // Hide village dropdown on outside click
+            }
+        });
+    });
+
+    //end mother  infor 
+
+    //start current address infor 
+    //discrict dropdown search
+    $(document).ready(function() {
+        $('#stay_province-select').change(function() {
+            let provinceId = $(this).val();
+            $('#stay_dropdownListDistrict').empty();
+            $('#stay_dropdownDisplayDistrict').text('--ជ្រើសរើសស្រុក--');
+
+            if (provinceId) {
+                $.ajax({
+                    url: '/provinces/' + provinceId + '/districts',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let districtList = '';
+                        $.each(data, function(key, district) {
+                            districtList += '<li class="district-item" data-id="' +
+                                district.district_kh_name + '">' + district.district_kh_name +
+                                '</li>';
+                        });
+                        $('#stay_dropdownListDistrict').html(
+                            districtList); // Populate district list
+                    },
+                    error: function() {
+                        alert('Error retrieving districts.');
+                    }
+                });
             }
         });
 
-        // Filter dropdown list based on search input
-        $('#searchInputMother').on('input', function() {
-            let value = $(this).val().toLowerCase();
-            $('#dropdownListMother li').filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        // Toggle dropdown display
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtName = $(this).text();
+            const districtId = $(this).data('id');
+            $('#stay_dropdownDisplayDistrict').text(districtName); // Update display text
+            var item = $('#stay_selectedDistrict').val(districtId);
+            console.log(item)
+            $('#stay_dropdownContentDistrict').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality
+        $('#stay_searchInputDistrict').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#stay_dropdownListDistrict .district-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter district items
             });
         });
 
-        // Handle selecting a mother and fetching details
-        $('#dropdownListMother').on('click', 'li', function() {
-            const selectedName = $(this).text();
-            const selectedId = $(this).data('id');
-            let motherPhotoPath = "{{ asset('upload') }}";
-            let defaultImage =
-                "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
-
-            $('#dropdownDisplayMother').text(selectedName);
-            $('#selectedMotherID').val(selectedId); // Set selected mother ID for backend
-
-            // Fetch mother details by ID
-            $.ajax({
-                url: `/get-mother-details/${selectedId}`,
-                type: 'GET',
-                success: function(mother) {
-
-                    $('#motherDetails').html(`
-    <img src="${mother.photo ? motherPhotoPath + '/' + mother.photo : defaultImage}" width="150px" alt="មិនមានរូបភាព"/>
-    <hr/>
-    <p>ឈ្មោះ៖ <b>${mother.fname_kh} ${mother.lname_kh}</b></p>
-    <p>ថ្ងៃខែឆ្នាំកំណើត៖ <b>${mother.day}-${mother.month}-${mother.year}</b></p>
-    <p>ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${mother.village_kh_name}</b>  ឃុំ <b>${mother.commune_kh_name}</b> ស្រុក <b>${mother.district_kh_name}</b> ខេត្ត <b>${mother.province_kh_name}</b></p>
-    <p>មុខរបរបច្ចុប្បន្ន៖ <b>${mother.job_title}</b></p>
-`);
-
-                },
-                error: function() {
-                    alert("Could not load mother details.");
-                }
-            });
-
-            $('#dropdownContentMother').hide(); // Hide dropdown after selection
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#stay_dropdownContentDistrict').hide(); // Hide dropdown on outside click
+            }
         });
     });
+
+    //commune dropdown search
+    $(document).ready(function() {
+        // Handle district selection
+        $(document).on('click', '.district-item', function() {
+            const districtId = $(this).data('id');
+            $('#selectedDistrict').val(districtId); // Set hidden input value for district
+            $('#dropdownDisplayDistrict').text($(this).text()); // Update display text
+            $('#dropdownContentDistrict').hide(); // Hide dropdown after selection
+
+            // Fetch communes based on selected district
+            fetchCommunes(districtId);
+        });
+
+        function fetchCommunes(districtId) {
+            $('#stay_dropdownListCommune').empty(); // Clear previous communes
+            $('#stay_dropdownDisplayCommune').text('--ជ្រើសរើស--'); // Reset commune display
+            $('#stay_selectedCommune').val(''); // Reset selected commune ID
+
+            if (districtId) {
+                $.ajax({
+                    url: '/districts/' + districtId + '/communes',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let communeList = '';
+                        $.each(data, function(key, commune) {
+                            communeList += '<li class="commune-item" data-id="' +
+                                commune.commune_kh_name + '">' + commune.commune_kh_name + '</li>';
+                        });
+                        $('#stay_dropdownListCommune').html(communeList); // Populate commune list
+                    },
+                    error: function() {
+                        alert('Error retrieving communes.');
+                    }
+                });
+            }
+        }
+
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeName = $(this).text();
+            const communeId = $(this).data('id');
+            $('#stay_dropdownDisplayCommune').text(communeName); // Update display text
+            $('#stay_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#stay_dropdownContentCommune').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for communes
+        $('#stay_searchInputCommune').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#stay_dropdownListCommune .commune-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter commune items
+            });
+        });
+
+        // Toggle dropdown display for communes
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#stay_dropdownContentDistrict').hide(); // Hide district dropdown on outside click
+                $('#stay_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+            }
+        });
+    });
+
+    //village dropdown search
+    $(document).ready(function() {
+        // Handle commune selection
+        $(document).on('click', '.commune-item', function() {
+            const communeId = $(this).data('id');
+            $('#stay_selectedCommune').val(communeId); // Set hidden input value for commune
+            $('#stay_dropdownDisplayCommune').text($(this).text()); // Update display text
+            $('#stay_dropdownContentCommune').hide(); // Hide dropdown after selection
+
+            // Fetch villages based on selected commune
+            fetchVillages(communeId);
+        });
+
+        // Function to fetch villages based on selected commune
+        function fetchVillages(communeId) {
+            $('#stay_dropdownListVillage').empty(); // Clear previous villages
+            $('#stay_dropdownDisplayVillage').text('--ជ្រើសរើស--'); // Reset village display
+            $('#stay_selectedVillage').val(''); // Reset selected village ID
+
+            if (communeId) {
+                $.ajax({
+                    url: '/communes/' + communeId + '/villages',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        let villageList = '';
+                        $.each(data, function(key, village) {
+                            villageList += '<li class="village-item" data-id="' + village
+                                .village_kh_name + '">' +
+                                village.village_kh_name + '</li>';
+                        });
+                        $('#stay_dropdownListVillage').html(villageList); // Populate village list
+                    },
+                    error: function() {
+                        alert('Error retrieving villages.');
+                    }
+                });
+            }
+        }
+
+        // Handle village selection
+        $(document).on('click', '.village-item', function() {
+            const villageName = $(this).text();
+            const villageId = $(this).data('id');
+            $('#stay_dropdownDisplayVillage').text(villageName); // Update display text
+            $('#stay_selectedVillage').val(villageId); // Set hidden input value for village
+            $('#stay_dropdownContentVillage').hide(); // Hide dropdown after selection
+        });
+
+        // Implement search functionality for villages
+        $('#stay_searchInputVillage').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            $('#stay_dropdownListVillage .village-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -
+                    1); // Filter village items
+            });
+        });
+
+        // Toggle dropdown display for villages
+        window.toggleDropdown = function(id) {
+            const dropdown = document.getElementById(id);
+        };
+
+        // Close dropdown if clicked outside
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.search-dropdown').length) {
+                $('#stay_dropdownContentCommune').hide(); // Hide commune dropdown on outside click
+                $('#stay_dropdownContentVillage').hide(); // Hide village dropdown on outside click
+            }
+        });
+    });
+
+    //end current address  infor 
+
 </script>

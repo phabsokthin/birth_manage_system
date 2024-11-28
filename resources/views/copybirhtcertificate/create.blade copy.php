@@ -80,14 +80,25 @@
 </style>
 
 
-<form action="{{ route('create.father') }}" method="POST" enctype="multipart/form-data" class="mt-4">
+<form action="{{ route('create_copy.birthCertificate') }}" method="POST" enctype="multipart/form-data" class="mt-4">
     @csrf
     <fieldset class="scheduler-border">
-        <legend class="scheduler-border">បង្កើតព័ត៌មានរបស់ឪពុក</legend>
+        <legend class="scheduler-border">បង្កើតសំបុត្របញ្ជាក់កំណើត</legend>
 
         <!-- Other form fields -->
 
         <div class="control-group">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="">លេខសំបុត្របញ្ជាក់កំណើត: *</label>
+                    <input type="text" class="form-control" required placeholder="លេខសំបុត្របញ្ជាក់កំណើត" name="copy_no">
+                </div>
+                <div class="col-md-3">
+                    <label for="">ចុះលេខសំបុត្របញ្ជាក់កំណើត: *</label>
+                    <input type="text" class="form-control" required placeholder="ចុះលេខសំបុត្របញ្ជាក់កំណើត" name="copy_note">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <label for="">នាមត្រកូល(ខ្មែរ): *</label>
@@ -123,15 +134,6 @@
                     <label for="">សញ្ជាត្តិ</label>
                     <input type="text" class="form-control" placeholder="សញ្ជាត្តិ" name="national">
                 </div>
-                {{-- <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="">រូបថត</label>
-                        <input type="file"  name="photo"
-                            id="imageValide" class="form-control">
-                        <div class="mt-2" id="image-holder_one"></div>
-                    </div>
-                </div> --}}
-
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="">រូបថត(4x6)</label>
@@ -139,23 +141,131 @@
                         <div id="image-holder_one" class=""></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-3">
-                    <label for="">ស្ថានភាពបច្ចុប្បន្ន</label>
-                    <select name="fstatus" required class="form-control">
-                        <option value="">--ជ្រើសរើសស្ថានភាព--</option>
-                        <option value="1">នៅរស់</option>
-                        <option value="0">ស្លាប់</option>
-                    </select>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="search-dropdown" style="position: relative;">
+                    <label for="">ឪពុកឈ្មោះ: *</label>
+                    <div>
+                        <div class="form-control" id="dropdownDisplayFather" style="cursor: pointer;">
+                            --ជ្រើសរើសឪពុកឈ្មោះ--</div>
+                        <div class="dropdown-content p-2" id="dropdownContentFather"
+                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
+                            <input type="text" class="form-control" id="searchInputFather"
+                                placeholder="ស្វែងរកឪពុកឈ្មោះ">
+                            <ul id="dropdownListFather" style="list-style: none; padding: 0; margin: 0;"></ul>
+                        </div>
+                        <input type="hidden" id="selectedFatherName">
+                    </div>
                 </div>
-
+                <input type="hidden" required name="selected_father" id="selectedFatherID" value="">
+            </div>
+            <div class="col-md-5 mt-4 ml-5" id="fatherDetailsContainer">
+                <h5>លម្អិត:</h5>
+                <div id="fatherDetails">
+                </div>
             </div>
         </div>
 
+        <hr>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="search-dropdown" style="position: relative;">
+                    <label for="">ម្តាយឈ្មោះ: *</label>
+                    <div>
+                        <div class="form-control" id="dropdownDisplayMother" style="cursor: pointer;">
+                            --ជ្រើសរើសម្តាយ--
+                        </div>
+                        <div class="dropdown-content p-2" id="dropdownContentMother"
+                            style="display: none; position: absolute; z-index: 100; background-color: white; border: 1px solid #ddd; width: 100%;">
+                            <input type="text" class="form-control" id="searchInputMother"
+                                placeholder="ស្វែងរកម្តាយឈ្មោះ">
+                            <ul id="dropdownListMother" style="list-style: none; padding: 0; margin: 0;"></ul>
+                        </div>
+                        <input type="hidden" id="selectedMotherName">
+                    </div>
+                </div>
+
+                <input type="hidden" required name="selected_mother" id="selectedMotherID" value="">
+            </div>
+
+
+            <div class="col-md-5 mt-5 ml-5" id="motherDetailsContainer">
+                <h5>លម្អិត:</h5>
+                <div id="motherDetails">
+                </div>
+            </div>
+
+        </div>
         <div class="mt-3 d-flex gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-calendar-fold">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-moon">
+                <path d="M16 2v4" />
+                <path d="M8 2v4" />
+                <path d="M3 10h18" />
+                <path d="M21 12v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8" />
+                <path d="M12 15a4 4 0 0 1 0-8c.9 0 1.72.3 2.4.8a5 5 0 0 0 0 6.4 4 4 0 0 1-2.4.8Z" />
+            </svg>
+            <h5 class="ml-2">ចុះថ្ងៃខែឆ្នាំ</h5>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="">នៅថ្ងៃ: *</label>
+                <select name="day_note" required id="day_note" class="form-control">
+                    <option value="">--ជ្រើសរើសថ្ងៃ--</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+
+                <label for="">នៅខែ: *</label>
+                <div>
+                    <div class="form-control" id="dropdownDisplayMonth_note">--ជ្រើសរើសខែ--</div>
+                    <div class="dropdown-content p-2" id="dropdownContentMonth_note">
+                        <input type="text" class="form-control" id="searchInputMonth_note"
+                            placeholder="ស្វែងរកខែ">
+                        <ul id="dropdownListMonth_note"></ul>
+                    </div>
+                    {{-- for display name to backend --}}
+                    <input type="hidden" required name="selected_month_note" id="selectedMonth_note" value="">
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="">នៅឆ្នាំ: *</label>
+                    <div>
+                        <div class="form-control" id="dropdownDisplayYear_note">--ជ្រើសរើសឆ្នាំ--</div>
+                        <div class="dropdown-content p-2" id="dropdownContentYear_note" style="display: none;">
+                            <input type="text" class="form-control" id="searchInputYear_note"
+                                placeholder="ស្វែងរកឆ្នាំ">
+                            <ul id="dropdownListYear_note"></ul>
+                        </div>
+                        {{-- for display name to backend --}}
+                        <input type="hidden" name="selected_year_note" id="selectedYear_note" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <label for="">ស្ថានភាព៖ *</label>
+                <select name="bstatus" class="form-control" id="">
+                    <option value="">--ជ្រើសរើស--</option>
+                    <option value="1">មិនបានធ្វើ</option>
+                    <option value="2">ធម្មតា</option>
+                    <option value="3">បានធ្វើ</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="mt-3 d-flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-calendar-fold">
                 <path d="M8 2v4" />
                 <path d="M16 2v4" />
                 <path d="M21 17V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11Z" />
@@ -179,7 +289,8 @@
                     <div>
                         <div class="form-control" id="dropdownDisplayMonth">--ជ្រើសរើសខែ--</div>
                         <div class="dropdown-content p-2" id="dropdownContentMonth">
-                            <input type="text" class="form-control" id="searchInputMonth" placeholder="ស្វែងរកខែ">
+                            <input type="text" class="form-control" id="searchInputMonth"
+                                placeholder="ស្វែងរកខែ">
                             <ul id="dropdownListMonth"></ul>
                         </div>
                     </div>
@@ -213,6 +324,8 @@
         </div>
 
 
+
+
         <div class="mt-1 d-flex gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -233,7 +346,7 @@
                 <select name="province" id="province-select" required class="form-control">
                     <option value="">--ជ្រើសរើស--</option>
                     @foreach ($province as $pro)
-                        <option value="{{ $pro->province_kh_name }}">{{ $pro->province_kh_name }}</option>
+                    <option value="{{ $pro->province_id }}">{{ $pro->province_kh_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -295,7 +408,6 @@
 
 
         </div>
-
 
 
         <div class="d-flex justify-content-end mt-2">
@@ -404,6 +516,15 @@
         daySelect.appendChild(option);
     }
 
+    const daySelect_note = document.getElementById('day_note');
+    for (let day_note = 1; day_note <= 31; day_note++) {
+        let option = document.createElement('option');
+        const khmerDay = convertToKhmerNumber(day_note);
+        option.value = khmerDay; // Set value in Khmer numerals
+        option.textContent = khmerDay; // Display text in Khmer numerals
+        daySelect_note.appendChild(option);
+    }
+
 
 
     $(document).ready(function() {
@@ -418,14 +539,24 @@
         khmerMonths.forEach(month => {
             $('#dropdownListMonth').append(`<li>${month}</li>`);
         });
-
+        khmerMonths.forEach(month => {
+            $('#dropdownListMonth_note').append(`<li>${month}</li>`);
+        });
         $('#dropdownDisplayMonth').on('click', function() {
             $('#dropdownContentMonth').toggle();
         });
-
+        $('#dropdownDisplayMonth_note').on('click', function() {
+            $('#dropdownContentMonth_note').toggle();
+        });
         $('#searchInputMonth').on('input', function() {
             let value = $(this).val().toLowerCase();
             $('#dropdownListMonth li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+        $('#searchInputMonth_note').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#dropdownListMonth_note li').filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
             });
         });
@@ -435,15 +566,25 @@
             $('#selectedMonth').val($(this).text());
             $('#dropdownContentMonth').hide();
         });
-
-
-        $('#dropdownDisplayMonth').on('click', function() {
-            $('#dropdownContentMonth').toggle();
+        $('#dropdownListMonth_note').on('click', 'li', function() {
+            $('#dropdownDisplayMonth_note').text($(this).text());
+            $('#selectedMonth_note').val($(this).text());
+            $('#dropdownContentMonth_note').hide();
         });
 
 
         $('#dropdownDisplayMonth').on('click', function() {
             $('#dropdownContentMonth').toggle();
+        });
+        $('#dropdownDisplayMonth_note').on('click', function() {
+            $('#dropdownContentMonth_note').toggle();
+        });
+
+        $('#dropdownDisplayMonth').on('click', function() {
+            $('#dropdownContentMonth').toggle();
+        });
+        $('#dropdownDisplayMonth_note').on('click', function() {
+            $('#dropdownContentMonth_note').toggle();
         });
 
 
@@ -581,6 +722,48 @@
             }
         });
 
+        // Close dropdowns when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-dropdown').length) {
+                $('#dropdownContentYear').hide();
+            }
+        });
+
+
+
+
+        // Populate the dropdown list
+        khmerYears.forEach(year => {
+            $('#dropdownListYear_note').append(`<li>${year}</li>`);
+        });
+
+        // Toggle dropdown on click
+        $('#dropdownDisplayYear_note').on('click', function() {
+            $('#dropdownContentYear_note').toggle();
+        });
+
+        // Search functionality in the dropdown
+        $('#searchInputYear_note').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#dropdownListYear_note li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        // Handle year selection from the dropdown
+        $('#dropdownListYear_note').on('click', 'li', function() {
+            $('#dropdownDisplayYear_note').text($(this).text());
+            $('#selectedYear_note').val($(this).text());
+            $('#dropdownContentYear_note').hide();
+        });
+
+        // Close dropdown when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.form-group').length) {
+                $('#dropdownContentYear_note').hide();
+            }
+        });
+
 
     });
 
@@ -601,7 +784,7 @@
                         let districtList = '';
                         $.each(data, function(key, district) {
                             districtList += '<li class="district-item" data-id="' +
-                                district.district_kh_name + '">' + district.district_kh_name +
+                                district.dis_id + '">' + district.district_kh_name +
                                 '</li>';
                         });
                         $('#dropdownListDistrict').html(
@@ -675,8 +858,9 @@
                     success: function(data) {
                         let communeList = '';
                         $.each(data, function(key, commune) {
-                            communeList += '<li class="commune-item" data-id="' + 
-                            commune.commune_kh_name + '">' +commune.commune_kh_name + '</li>';
+                            communeList += '<li class="commune-item" data-id="' + commune
+                                .commune_id + '">' +
+                                commune.commune_kh_name + '</li>';
                         });
                         $('#dropdownListCommune').html(communeList); // Populate commune list
                     },
@@ -749,8 +933,9 @@
                     success: function(data) {
                         let villageList = '';
                         $.each(data, function(key, village) {
-                            villageList += '<li class="village-item" data-id="' + 
-                            village.village_kh_name + '">' +village.village_kh_name + '</li>';
+                            villageList += '<li class="village-item" data-id="' + village
+                                .id + '">' +
+                                village.village_kh_name + '</li>';
                         });
                         $('#dropdownListVillage').html(villageList); // Populate village list
                     },
@@ -790,6 +975,166 @@
                 $('#dropdownContentCommune').hide(); // Hide commune dropdown on outside click
                 $('#dropdownContentVillage').hide(); // Hide village dropdown on outside click
             }
+        });
+    });
+
+
+    //fetch father dropdown and display details
+    $(document).ready(function() {
+        // Toggle dropdown display on click
+        $('#dropdownDisplayFather').on('click', function(e) {
+            e.stopPropagation();
+            $('#dropdownContentFather').toggle();
+
+            // Fetch father list only once if empty
+            if ($('#dropdownListFather').is(':empty')) {
+                $.ajax({
+                    url: '/get-fathers',
+                    type: 'GET',
+                    success: function(fathers) {
+                        fathers.forEach(function(father) {
+                            $('#dropdownListFather').append(
+                                `<li data-id="${father.father_id}" class="dropdown-item">${father.fname_kh} ${father.lname_kh} || ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${father.village_kh_name}</b>  ឃុំ <b>${father.commune_kh_name}</b> ស្រុក <b>${father.district_kh_name}</b> ខេត្ត <b>${father.province_kh_name}</b></li>`
+                            );
+                        });
+                    },
+                    error: function() {
+                        alert("Could not load father names.");
+                    }
+                });
+            }
+        });
+
+        // Hide dropdown if clicking outside of it
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-dropdown').length) {
+                $('#dropdownContentFather').hide();
+            }
+        });
+
+        // Filter dropdown list based on search input
+        $('#searchInputFather').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#dropdownListFather li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        // Handle selecting a father and fetching details
+        $('#dropdownListFather').on('click', 'li', function() {
+            const selectedName = $(this).text();
+            const selectedId = $(this).data('id');
+
+            let fatherPhotoPath = "{{ asset('upload') }}";
+            let defaultImage =
+                "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
+
+            $('#dropdownDisplayFather').text(selectedName);
+            $('#selectedFatherID').val(selectedId); // Set selected father ID for backend
+
+            // Fetch father details by ID
+            $.ajax({
+                url: `/get-father-details/${selectedId}`,
+                type: 'GET',
+                success: function(father) {
+                    $('#fatherDetails').html(`
+                
+                     <img src="${father.photo ? fatherPhotoPath + '/' + father.photo : defaultImage}" width="150px" alt="មិនមានរូបភាព"/>
+                    <hr/>
+                    <p>ឈ្មោះ៖ <b>${father.fname_kh} ${father.lname_kh}</b></p>
+                    <p>ថ្ងៃខែឆ្នាំកំណើត៖ <b>${father.day}-${father.month}-${father.year}</b></p>
+                    <p>ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${father.village_kh_name}</b>  ឃុំ <b>${father.commune_kh_name}</b> ស្រុក <b>${father.district_kh_name}</b> ខេត្ត <b>${father.province_kh_name}</b></p>
+                    <p>មុខរបរបច្ចុប្បន្ន៖ <b>${father.job_title}</b></p>
+                    
+                `);
+                },
+                error: function() {
+                    alert("Could not load father details.");
+                }
+            });
+
+            $('#dropdownContentFather').hide(); // Hide dropdown after selection
+        });
+    });
+
+
+
+
+    //get mother dropdown and display mother info
+
+    $(document).ready(function() {
+        // Toggle dropdown display for mother
+        $('#dropdownDisplayMother').on('click', function(e) {
+            e.stopPropagation();
+            $('#dropdownContentMother').toggle();
+
+            // Fetch mother list only once if empty
+            if ($('#dropdownListMother').is(':empty')) {
+                $.ajax({
+                    url: '/get-mothers',
+                    type: 'GET',
+                    success: function(mothers) {
+                        mothers.forEach(function(mother) {
+                            $('#dropdownListMother').append(
+                                `<li data-id="${mother.mother_id}" class="dropdown-item">${mother.fname_kh} ${mother.lname_kh} || ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${mother.village_kh_name}</b>  ឃុំ <b>${mother.commune_kh_name}</b> ស្រុក <b>${mother.district_kh_name}</b> ខេត្ត <b>${mother.province_kh_name}</b> </li>`
+                            );
+                        });
+                    },
+                    error: function() {
+                        alert("Could not load mother names.");
+                    }
+                });
+            }
+        });
+
+        // Hide dropdown if clicking outside of it
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-dropdown').length) {
+                $('#dropdownContentMother').hide();
+            }
+        });
+
+        // Filter dropdown list based on search input
+        $('#searchInputMother').on('input', function() {
+            let value = $(this).val().toLowerCase();
+            $('#dropdownListMother li').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+
+        // Handle selecting a mother and fetching details
+        $('#dropdownListMother').on('click', 'li', function() {
+            const selectedName = $(this).text();
+            const selectedId = $(this).data('id');
+            let motherPhotoPath = "{{ asset('upload') }}";
+            let defaultImage =
+                "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
+
+            $('#dropdownDisplayMother').text(selectedName);
+            $('#selectedMotherID').val(selectedId); // Set selected mother ID for backend
+
+            // Fetch mother details by ID
+            $.ajax({
+                url: `/get-mother-details/${selectedId}`,
+                type: 'GET',
+                success: function(mother) {
+
+                    $('#motherDetails').html(`
+    <img src="${mother.photo ? motherPhotoPath + '/' + mother.photo : defaultImage}" width="150px" alt="មិនមានរូបភាព"/>
+    <hr/>
+    <p>ឈ្មោះ៖ <b>${mother.fname_kh} ${mother.lname_kh}</b></p>
+    <p>ថ្ងៃខែឆ្នាំកំណើត៖ <b>${mother.day}-${mother.month}-${mother.year}</b></p>
+    <p>ទីលំនៅបច្ចុប្បន្ន៖ ភូមិ <b>${mother.village_kh_name}</b>  ឃុំ <b>${mother.commune_kh_name}</b> ស្រុក <b>${mother.district_kh_name}</b> ខេត្ត <b>${mother.province_kh_name}</b></p>
+    <p>មុខរបរបច្ចុប្បន្ន៖ <b>${mother.job_title}</b></p>
+`);
+
+                },
+                error: function() {
+                    alert("Could not load mother details.");
+                }
+            });
+
+            $('#dropdownContentMother').hide(); // Hide dropdown after selection
         });
     });
 </script>

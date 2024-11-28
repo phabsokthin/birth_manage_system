@@ -10,11 +10,12 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $count = Birth_Certificate::where("bstatus","=", '3')->count();
-        $count_undo= Birth_Certificate::where("bstatus","=", '1')->count();
+        // $count = Birth_Certificate::where("bstatus","=", '3')->count();
+        // $count_undo= Birth_Certificate::where("bstatus","=", '1')->count();
         $countFamily = Birth_Certificate::count();
         $users = User::count();
-        return view('dashboard.dashboard', compact('count','count_undo', 'countFamily','users'));
+        // return view('dashboard.dashboard', compact('count','count_undo', 'countFamily','users'));
+        return view('dashboard.dashboard', compact( 'countFamily','users'));
     }
 
     public function test(){

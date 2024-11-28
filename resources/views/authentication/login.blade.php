@@ -165,8 +165,8 @@
                             @endif
 
                             <button class="btn btn-primary rounded-pill">ចូល</button>
-                            <!-- <span class="forgot-pass"><a href="#">Lost password?</a></span>
-                            <span class="register"><a href="{{ route('regis') }}">Register / Signup</a></span> -->
+                            <span class="forgot-pass"><a href="#">Lost password?</a></span>
+                            <span class="register"><a href="{{ route('regis') }}">Register / Signup</a></span>
                         </form>
                     </div>
                 </div>

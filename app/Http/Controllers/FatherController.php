@@ -18,31 +18,49 @@ class FatherController extends Controller
     {
 
         $village = Village::all();
-        $fathers = DB::table('fathers')
-            ->leftJoin('villages', 'villages.id', "=", "fathers.village_id")
-            ->leftJoin('districts', 'districts.dis_id', "=", "fathers.dis_id")
-            ->leftJoin('communes', 'communes.commune_id', "=", "fathers.commune_id")
-            ->leftJoin('provinces', "provinces.province_id", "=", "fathers.province_id")
-            ->select('*')->get();
+        $fathers = DB::table('fathers')->get();
+            // ->leftJoin('villages', 'villages.id', "=", "fathers.village_id")
+            // ->leftJoin('districts', 'districts.dis_id', "=", "fathers.dis_id")
+            // ->leftJoin('communes', 'communes.commune_id', "=", "fathers.commune_id")
+            // ->leftJoin('provinces', "provinces.province_id", "=", "fathers.province_id")
+            // ->select('*')->get();
         $province = Province::all();
-        return view('father.fatherTab', compact('village', 'province', 'fathers'));
+        return view('father.fatherTab', compact('province','fathers'));
     }
     public function getDistrictsByProvince($provinceId)
     {
-        $districts = District::where('province_id', $provinceId)->get();
+        //$districts = District::where('province_id', $provinceId)->get();
+        $districts = DB::table('districts')
+        ->join('provinces', 'provinces.province_id','=', 'districts.province_id')
+        ->select('*')
+        ->where('provinces.province_kh_name', $provinceId)
+        ->get();
         return response()->json($districts);
+        
     }
 
     public function getCommunesByDistrict($districtId)
     {
-        $communes = Commune::where('dis_id', $districtId)->get();
-        return response()->json($communes);
+        //$communes = Commune::where('dis_id', $districtId)->get();
+       // return response()->json($communes);
+       $communes = DB::table('communes')
+       ->join('districts', 'districts.dis_id','=', 'communes.dis_id')
+       ->select('*')
+       ->where('districts.district_kh_name', $districtId)
+       ->get();
+       return response()->json($communes);
     }
 
 
     public function getVillageByCommune($villageId)
     {
-        $villages = Village::where('commune_id', $villageId)->get();
+        // $villages = Village::where('commune_id', $villageId)->get();
+        // return response()->json($villages);
+        $villages=DB::table('villages')
+        ->join('communes', 'communes.commune_id','=', 'villages.commune_id')
+        ->select('*')
+        ->where('communes.commune_kh_name', $villageId)
+        ->get();
         return response()->json($villages);
     }
 
@@ -62,10 +80,10 @@ class FatherController extends Controller
         $father->month = $request->selected_month;
         $father->year = $request->selected_year;
         $father->job_title = $request->job_title;
-        $father->village_id = $request->selected_village;
-        $father->dis_id = $request->selected_district;
-        $father->commune_id = $request->selected_commune;
-        $father->province_id = $request->province;
+        $father->village_kh_name = $request->selected_village;
+        $father->district_kh_name = $request->selected_district;
+        $father->commune_kh_name = $request->selected_commune;
+        $father->province_kh_name = $request->province;
         $father->user_id = $request->user_id ?? 1;
 
         if ($request->hasFile('photo')) {

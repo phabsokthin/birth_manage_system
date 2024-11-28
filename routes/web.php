@@ -68,10 +68,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::controller(BirthCertificateController::class)->group(callback: function () {
         Route::get('/tab_certificate', 'index')->name('tab.birthcertificate');
-        Route::get('/get-fathers', 'getFathers');
-        Route::get('/get-mothers', 'getMothers');
-        Route::get('/get-father-details/{id}', 'getFatherDetails');
-        Route::get('/get-mother-details/{id}', 'getMotherDetails');
+        // Route::get('/get-fathers', 'getFathers');
+        // Route::get('/get-mothers', 'getMothers');
+        // Route::get('/get-father-details/{id}', 'getFatherDetails');
+        // Route::get('/get-mother-details/{id}', 'getMotherDetails');
+        
+        Route::get('/provinces/{provinceId}/districts',  'getDistrictsByProvince');
+        Route::get('/districts/{districtId}/communes',  'getCommunesByDistrict');
+        Route::get('/communes/{communeId}/villages',  'getVillageByCommune');
         Route::post('/create_birthCertificate', 'create')->name('create.birthCertificate');
         Route::get('/delete_birthCertificate/{id}', 'delete_birth')->name('delete.birthCertificate');
         Route::get('/get_birthCertificateById/{id}', 'get_birth_certificate_Id')->name('get_birth.birthCertificate');

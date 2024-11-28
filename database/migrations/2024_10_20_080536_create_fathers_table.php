@@ -26,20 +26,11 @@ return new class extends Migration
             $table->string('year')->nullable();
             $table->string('job_title')->nullable();
             $table->text('photo')->nullable();
-            $table->unsignedBigInteger("village_id")->nullable();
-            $table->foreign("village_id")->references('id')->on('villages')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger("dis_id")->nullable();
-            $table->foreign("dis_id")->references('dis_id')->on('districts')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger("commune_id")->nullable();
-            $table->foreign("commune_id")->references('commune_id')->on('communes')->onDelete('cascade')->onUpdate('cascade');
-
-
-            $table->unsignedBigInteger("province_id")->nullable();
-            $table->foreign("province_id")->references('province_id')->on('provinces')->onDelete('cascade')->onUpdate('cascade');
-
-
+            $table->string('province_kh_name')->nullable();
+            $table->string('district_kh_name')->nullable();
+            $table->string('commune_kh_name')->nullable();
+            $table->string('village_kh_name')->nullable();
+            
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
